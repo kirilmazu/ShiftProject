@@ -1,0 +1,49 @@
+.btn{
+    width: 50%;
+    height: 30px;
+    size: 30px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #1DB2EC; 
+    color: black;
+    font-weight: bold;
+    outline: none;
+    border: 0;
+  }
+
+  input.txt {
+    border-radius: 10px;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+  }
+
+  input.txtName {
+    border-radius: 10px;
+    width: 120px;
+    height: 30px;
+    text-align: center;
+  }
+
+  div{
+    margin-bottom: 10px;
+  }
+
+  .intro{
+    text-align: center;
+    width: 30%; 
+    height: 100vh; 
+    background-color: #07A2DE;
+  }
+
+  .column {
+      float: left;
+      padding: 10px;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
