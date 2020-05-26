@@ -2,3 +2,14 @@
 body {
     margin: 0;
 }
+
+div.column {
+      float: left;
+      padding: 10px;
+  }
+
+  div.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }

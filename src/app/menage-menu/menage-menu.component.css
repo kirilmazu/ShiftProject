@@ -1,0 +1,21 @@
+div.card{
+    outline: auto;
+    height: 10%;
+    width: 20%;
+    background-color: rgb(7,162,222, 0.3);
+}
+
+img.center {
+    margin: auto;
+    width: 50%;
+    padding: 25%;
+  }
+
+  div.center{
+      text-align: center;
+  }
+
+  div.vreticleCenter{
+      margin: auto;
+      width: 50%;
+  }
