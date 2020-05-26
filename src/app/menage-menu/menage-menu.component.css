@@ -8,7 +8,6 @@ div.card{
 img.center {
     margin: auto;
     width: 50%;
-    padding: 25%;
   }
 
   div.center{
@@ -17,5 +16,5 @@ img.center {
 
   div.vreticleCenter{
       margin: auto;
-      width: 50%;
+      width: 70%;
   }

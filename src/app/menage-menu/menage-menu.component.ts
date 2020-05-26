@@ -12,4 +12,20 @@ export class MenageMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  DashboardClick():void{
+
+  }
+
+  ScheduleClick():void{
+
+  }
+
+  RequestsClick():void{
+
+  }
+
+  TimesheetClick():void{
+
+  }
+
 }

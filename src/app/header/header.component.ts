@@ -13,23 +13,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut(): void{
-
+      alert("Logout");
+      
   }
 
-  DashboardClick():void{
-
-  }
-
-  ScheduleClick():void{
-
-  }
-
-  RequestsClick():void{
-
-  }
-
-  TimesheetClick():void{
-
-  }
   
 }
