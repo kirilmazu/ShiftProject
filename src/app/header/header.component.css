@@ -11,6 +11,11 @@
     font-weight: 600;
   }
 
+  img.sized{
+    height: 40px;
+    padding: 0.5%;
+  }
+
   div.spaser{
       width: 1%;
   }
@@ -21,4 +26,5 @@
 
   div.logoutLink{ 
       text-align: right;
+      padding: 1%;
   }

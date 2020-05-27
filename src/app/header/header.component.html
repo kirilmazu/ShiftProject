@@ -1,6 +1,5 @@
 <div class="toolbar" role="banner">
-    <img
-      width="40"
+    <img class="sized"
       alt="ShiftIcon"
       src="../assets/ShiftIcon.png"
     />
@@ -8,7 +7,10 @@
     <span>Shift project</span>
       <div class="spacer"></div>
       <div class="bigSpaser"></div>
+        <img (click)="userClick()" class="sized" alt="personIcon" src="../assets/person.png"/>
+        <p (click)="userClick()">{{userName}}</p>
+
       <div class="logoutLink">
-          <a (click)="logOut()">Logout</a>
+        <a (click)="logOut()">Logout</a>
       </div>
   </div>

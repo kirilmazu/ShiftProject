@@ -16,7 +16,7 @@ import { MenageMenuComponent } from './menage-menu/menage-menu.component';
     RegisterComponent,
     MainRoutComponent,
     HeaderComponent,
-    MenageMenuComponent
+    MenageMenuComponent,
   ],
   imports: [
     BrowserModule,

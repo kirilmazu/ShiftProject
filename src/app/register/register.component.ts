@@ -12,6 +12,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+  SingUp():void{
+    alert("sing up")
+  }
 
 }

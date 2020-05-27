@@ -1,39 +1,21 @@
 <div class="row vreticleCenter">
-    <div class="card column" onclick="DashboardClick()">
-        <div class="center"><img class="center" alt="dashboardIcon" src="../assets/dashboard.png" /></div>
-        <div class="center">
-            <p>Dashboard</p>
-        </div>
+    <div class="card column center" (click)="DashboardClick()">
+        <img class="center" alt="dashboardIcon" src="../assets/dashboard.png" />
+        <p>Dashboard</p>
     </div>
 
-    <div class="column"></div>
-
-    <div class="card column" onclick="ScheduleClick()">
-        <div class="center"><img class="center" alt="calendarIcon" src="../assets/calendar.png" /></div>
-        <div class="center">
-            <p>Schedule</p>
-        </div>
+    <div class="card column center" (click)="ScheduleClick()">
+        <img class="center" alt="calendarIcon" src="../assets/calendar.png" />
+        <p>Schedule</p>
     </div>
 
-    <div class="column"></div>
-
-    <div class="card column" onclick="RequestsClick()">
-        <div class="center"><img class="center" alt="requestIcon" src="../assets/request.png" /></div>
-        <div class="center">
-            <p>Requests</p>
-        </div>
+    <div class="card column center" (click)="RequestsClick()">
+        <img class="center" alt="requestIcon" src="../assets/request.png" />
+        <p>Requests</p>
     </div>
 
-    <div class="column"></div>
-
-    <div class="card column" onclick="TimesheetClick()">
-        <div class="center">
-            <img class="center" alt="sheetIcon" src="../assets/sheet.png" />
-        </div>
-        <div class="center">
-            <p>Timesheet</p>
-        </div>
+    <div class="card column center" (click)="TimesheetClick()">
+        <img class="center" alt="sheetIcon" src="../assets/sheet.png" />
+        <p>Timesheet</p>
     </div>
-
-
 </div>

@@ -3,6 +3,7 @@ div.card{
     height: 10%;
     width: 20%;
     background-color: rgb(7,162,222, 0.3);
+    margin-left: 2%;
 }
 
 img.center {

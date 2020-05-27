@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  userName = "My name";
   constructor() { }
 
   ngOnInit(): void {
@@ -14,7 +15,10 @@ export class HeaderComponent implements OnInit {
 
   logOut(): void{
       alert("Logout");
-      
+  }
+
+  userClick():void{
+    alert("user");
   }
 
   
