@@ -8,6 +8,8 @@ import { RegisterComponent } from './register/register.component';
 import { MainRoutComponent } from './main-rout/main-rout.component';
 import { HeaderComponent } from './header/header.component';
 import { MenageMenuComponent } from './menage-menu/menage-menu.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RequestsComponent } from './requests/requests.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { MenageMenuComponent } from './menage-menu/menage-menu.component';
     MainRoutComponent,
     HeaderComponent,
     MenageMenuComponent,
+    DashboardComponent,
+    RequestsComponent,
   ],
   imports: [
     BrowserModule,
