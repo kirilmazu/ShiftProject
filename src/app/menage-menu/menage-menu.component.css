@@ -1,14 +1,15 @@
 div.card{
-    outline: auto;
+    border-radius: 4px;
+    outline: thick;
     height: 10%;
     width: 20%;
-    background-color: rgb(7,162,222, 0.3);
+    background-color: rgba(103, 176, 194, 0.4);
+    margin-left: 2%;
 }
 
 img.center {
     margin: auto;
     width: 50%;
-    padding: 25%;
   }
 
   div.center{
@@ -17,5 +18,5 @@ img.center {
 
   div.vreticleCenter{
       margin: auto;
-      width: 50%;
+      width: 70%;
   }

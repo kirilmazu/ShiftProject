@@ -1,33 +1,28 @@
 <div class="row">
     <div class="column intro" id="intro">
-      <div style="height: 20vh;"></div>
-      <h1>Site name</h1>
+      <h1 class="introHader">Site name</h1>
       <p>Few limes about the system</p>
     </div>
 
-    <div class="column" style="width: 15%;"></div>
-
-    <div class="column" style="text-align: center;">
-    <div>
-        <h1 style="color: rgb(7, 102, 139);">Sing up</h1>
-    </div>
-
-    <div style="background-color: rgb(45, 97, 117); height: 2px"></div>
+    <div class="column formBody">
+      <h1 class="formBodyHader">Sing up</h1>
+      <div class="devider"></div>
   
-    <div><input type="email" class="txt" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter email" required></div>
-    <div><input type="text" class="txt" id="userName" name="userName" placeholder="Enter username" required></div>
-    <div><input type="password" class="txt" id="password" name="password" placeholder="Enter password" required></div>
-    <div><input type="password" class="txt" id="rePassword" name="rePassword" placeholder="Enter password agin" required></div>
-    <div style="text-align: start;">
-        <p style="font-weight: bold;">Name</p>
+      <div><input type="email" class="txt" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter email" required></div>
+      <div><input type="text" class="txt" id="userName" name="userName" placeholder="Enter username" required></div>
+      <div><input type="password" class="txt" id="password" name="password" placeholder="Enter password" required></div>
+      <div><input type="password" class="txt" id="rePassword" name="rePassword" placeholder="Enter password agin" required></div>
+      <div class="nameForm">
+        <p class="nameHad">Name</p>
         <input type="text" class="txtName" id="firstName" name="firstName" placeholder="First" required>
         <input type="text" class="txtName" id="lastName" name="lastName" placeholder="Last" required>
-    </div>
-    <div><input type="text" class="txt" id="company" name="company" placeholder="Enter company name" required></div>
-    <div><input type="text" class="txt" id="team" name="team" placeholder="Enter team name" required></div>
-    <div><input type="text" class="txt" id="role" name="role" placeholder="Enter role name" required></div>
+      </div>
+      <div><input type="text" class="txt" id="company" name="company" placeholder="Enter company name" required></div>
+      <div><input type="text" class="txt" id="team" name="team" placeholder="Enter team name" required></div>
+      <div><input type="text" class="txt" id="role" name="role" placeholder="Enter role name" required></div>
 
-     <button type="button" class="btn" onclick="SingUp()">Sing up</button>
+     <div><button type="button" class="btn" (click)="SingUp()">Sing up</button></div>
+     <button type="button" class="btn" (click)="cansel()">Censel</button>
     </div>
 
   </div>

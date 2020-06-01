@@ -7,14 +7,19 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  username:string;
+  password:string;
 
   constructor(private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
   }
 
+  login():void{
+    this.router.navigate(['/main']);
+  }
+
   goToRegister(): void{
-    console.log('====')
     this.router.navigate(['/register']);
   }
 

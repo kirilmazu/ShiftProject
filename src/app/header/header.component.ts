@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,29 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  userName = "My name";
+  constructor(private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
   }
 
   logOut(): void{
-
+      alert("Logout");
+      /*loguot*/
+      this.router.navigate(['/login']);
   }
 
-  DashboardClick():void{
-
+  userClick():void{
+    alert("user");
   }
 
-  ScheduleClick():void{
-
-  }
-
-  RequestsClick():void{
-
-  }
-
-  TimesheetClick():void{
-
-  }
   
 }
