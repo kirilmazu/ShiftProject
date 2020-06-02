@@ -8,7 +8,7 @@ div.card{
 }
 
 img.center {
-    margin: auto;
+    margin: auto; 
     width: 50%;
   }
 
@@ -17,6 +17,6 @@ img.center {
   }
 
   div.vreticleCenter{
-      margin: auto;
-      width: 70%;
+      margin-left: 20%;
+      width: 100%;
   }
