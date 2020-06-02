@@ -1,1 +1,37 @@
-<p>requests works!</p>
+
+<div class="main">
+    <div class="pn">
+        <button class="btn pn" (click)="previousWeek()"><previous week</button>
+        <button class="btn pn" (click)="nextWeek()">next week></button>
+    </div>
+<table class="requestTable">
+    <tr>
+        <!--Day name-->
+          <th *ngFor = "let dayDate of dayDates">
+            {{dayNames[dayDate.getDay()]}}
+          </th>
+    </tr>
+    <tr>
+        <!--Date-->
+        <th *ngFor = "let dayDate of dayDates">
+            {{dayDate.toLocaleDateString()}}
+          </th>
+    </tr>
+    <tr *ngFor = "let row of requestrows">
+        <td *ngFor = "let request of row">
+            <input class="shift" type="number" [(ngModel)]="request.priority" (change)="inputOnChange()"/>
+        </td>
+    </tr>
+</table>
+
+<button class="btn">Save</button>
+
+<div class="priority">
+<p class="p0">0-Can't Work</p>
+<p class="p1">1-Prefered to don't work</p>
+<p class="p2">2-Available</p>
+<p class="p3">3-Prefered shift</p>
+<p class="p4">4-Most prefered shift</p>
+</div>
+
+</div>
