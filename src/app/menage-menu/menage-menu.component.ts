@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-menage-menu',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menage-menu.component.css']
 })
 export class MenageMenuComponent implements OnInit {
+  @Input() component_to_show:string;
+  @Output() toChange = new EventEmitter<string>(); 
 
   constructor() { }
 
@@ -13,19 +15,14 @@ export class MenageMenuComponent implements OnInit {
   }
 
   DashboardClick():void{
-      alert("Dashboard");
+    this.toChange.emit("Dashboard");
   }
 
   ScheduleClick():void{
-    alert("Schedule");
+    this.toChange.emit("Schedule");
   }
 
   RequestsClick():void{
-    alert("Requests");
+    this.toChange.emit("Requests");
   }
-
-  TimesheetClick():void{
-    alert("Timesheet");
-  }
-
 }
