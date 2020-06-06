@@ -16,6 +16,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { BuildScheduleComponent } from './build-schedule/build-schedule.component';
 
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,13 +33,18 @@ import { BuildScheduleComponent } from './build-schedule/build-schedule.componen
     RequestsComponent,
     ScheduleComponent,
     BuildScheduleComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    MatSliderModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
