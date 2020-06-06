@@ -13,7 +13,8 @@ export class MainRoutComponent implements OnInit {
   
 
   constructor() {
-    this.component_to_show="dashboard";
+    this.component_to_show="Schedule";//set the defult component
+    this.onChange(this.component_to_show);
    }
 
   ngOnInit(): void {

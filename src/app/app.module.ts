@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RequestsComponent } from './requests/requests.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { BuildScheduleComponent } from './build-schedule/build-schedule.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
     DashboardComponent,
     RequestsComponent,
     ScheduleComponent,
+    BuildScheduleComponent,
   ],
   imports: [
     BrowserModule,

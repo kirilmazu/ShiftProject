@@ -13,6 +13,8 @@ export class ScheduleComponent implements OnInit {
   dayDates:Array<Date>;//The all week dates
   shiftRows: Array<Array<Shift>>;
 
+  isManager = true;//take it from user data
+
   constructor() {
     /**get the date of week */
     /**the format of date is MM/dd/yyyy */
