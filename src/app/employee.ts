@@ -1,4 +1,4 @@
-class Employee{
+export class Employee {
     name: string;
 
     firstName: string;
@@ -19,5 +19,4 @@ class Employee{
         this.team = team;
         this.role = role;
     }
-
 }

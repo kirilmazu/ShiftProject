@@ -46,22 +46,3 @@ button.btn{
     margin-left: 40%;
     margin-bottom: 2%;
   }
-
-  div.priority{
-      background-color: rgb(0, 0, 0, 0.2);
-  }
-  p.p0{
-      color: red;
-  }
-  p.p1{
-    color: orange;
-  }
-  p.p2{
-    color: yellow;
-  }
-  p.p3{
-    color: blue;
-  }
-  p.p4{
-    color: green;
-  }
