@@ -1,28 +1,68 @@
-<div class="row">
+<div class="row main">
     <div class="column intro" id="intro">
-      <h1 class="introHader">Site name</h1>
-      <p>Few limes about the system</p>
+      <h1 class="introHader">{{introHader}}</h1>
+      <p>{{introBody}}</p>
     </div>
 
     <div class="column formBody">
       <h1 class="formBodyHader">Sing up</h1>
       <div class="devider"></div>
-  
-      <div><input type="email" class="txt" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter email" required></div>
-      <div><input type="text" class="txt" id="userName" name="userName" placeholder="Enter username" required></div>
-      <div><input type="password" class="txt" id="password" name="password" placeholder="Enter password" required></div>
-      <div><input type="password" class="txt" id="rePassword" name="rePassword" placeholder="Enter password agin" required></div>
-      <div class="nameForm">
-        <p class="nameHad">Name</p>
-        <input type="text" class="txtName" id="firstName" name="firstName" placeholder="First" required>
-        <input type="text" class="txtName" id="lastName" name="lastName" placeholder="Last" required>
-      </div>
-      <div><input type="text" class="txt" id="company" name="company" placeholder="Enter company name" required></div>
-      <div><input type="text" class="txt" id="team" name="team" placeholder="Enter team name" required></div>
-      <div><input type="text" class="txt" id="role" name="role" placeholder="Enter role name" required></div>
 
-     <div><button type="button" class="btn" (click)="SingUp()">Sing up</button></div>
-     <button type="button" class="btn" (click)="cansel()">Censel</button>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" name="email"  [(ngModel)]="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter email" required>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Enter username" [(ngModel)]="username" name="username" required>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>password</mat-label>
+        <input matInput [type]="hidePass ? 'password' : 'text'" [(ngModel)]="password">
+        <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass" required>
+        <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>re password</mat-label>
+        <input matInput [type]="hideRePass ? 'password' : 'text'" [(ngModel)]="rePassword">
+        <button mat-icon-button matSuffix (click)="hideRePass = !hideRePass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRePass" required>
+        <mat-icon>{{hideRePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div class="nameHad"><mat-label>Name</mat-label></div>
+      <div class="nameForm">
+      <mat-form-field class="fName-width">
+        <mat-label>First name</mat-label>
+        <input matInput placeholder="Enter first name" [(ngModel)]="firstName" name="firstName" required>
+      </mat-form-field>
+      <mat-form-field class="lName-width">
+        <mat-label>Last name</mat-label>
+        <input matInput placeholder="Enter last name" [(ngModel)]="lastName" name="lastName" required>
+      </mat-form-field>
+      </div>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Company</mat-label>
+        <input matInput placeholder="Enter company name" [(ngModel)]="company" name="company" required>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Team</mat-label>
+        <input matInput placeholder="Enter team name" [(ngModel)]="team" name="team">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Role</mat-label>
+        <mat-select [(ngModel)]="role">
+          <mat-option value="Worker">Worker</mat-option>
+          <mat-option value="Managet">Manager</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+     <div><button mat-raised-button type="button" class="btn" (click)="SingUp()">Sing up</button></div>
+     <button mat-raised-button type="button" class="btn" (click)="cansel()">Censel</button>
     </div>
 
   </div>
