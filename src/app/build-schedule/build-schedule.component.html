@@ -1,28 +1,28 @@
 <div class="main">
     <div class="pn">
-        <button class="btn pn" (click)="previousWeek()"><previous week</button>
-        <button class="btn pn" (click)="nextWeek()">next week></button>
+        <button mat-raised-button class="btn pn" (click)="previousWeek()"><previous week</button>
+        <button mat-raised-button class="btn pn" (click)="nextWeek()">next week></button>
     </div>
 
     <!--Requests of all employees-->
 <div *ngFor = "let weekReqest of weekReqests">    
-    <p>{{weekReqest.employee.name}}</p>
+    <p class="dayHead">{{weekReqest.employee.name}}</p>
 <table class="requestTable" >
     <tr>
         <!--Day name-->
-          <th *ngFor = "let dayDate of dayDates">
+          <th class="dayHead" *ngFor = "let dayDate of dayDates">
             {{dayNames[dayDate.getDay()]}}
           </th>
     </tr>
     <tr>
         <!--Date-->
-        <th *ngFor = "let dayDate of dayDates">
+        <th class="textBody" *ngFor = "let dayDate of dayDates">
             {{dayDate.toLocaleDateString()}}
           </th>
     </tr>
     <tr *ngFor = "let row of weekReqest.requests">
         <td *ngFor = "let request of row">
-            <p>{{request.priority}}</p>
+            <p class="textBody">{{request.priority}}</p>
         </td>
     </tr>
 </table>
@@ -31,27 +31,30 @@
 
 <!--New scheduale build-->
 <div style="height: 2vh;"></div>
-<p>New schedule</p>
+<p class="dayHead">New schedule</p>
 <table class="requestTable">
     <tr>
         <!--Day name-->
-          <th *ngFor = "let dayDate of dayDates">
+          <th class="dayHead" *ngFor = "let dayDate of dayDates">
             {{dayNames[dayDate.getDay()]}}
           </th>
     </tr>
     <tr>
         <!--Date-->
-        <th *ngFor = "let dayDate of dayDates">
+        <th class="textBody" *ngFor = "let dayDate of dayDates">
             {{dayDate.toLocaleDateString()}}
           </th>
     </tr>
     <tr *ngFor = "let row of shifts">
         <td *ngFor = "let shift of row">
-            <select name="cars" id="cars">
-                <option class="employee" *ngFor="let employee of employees" value="employee.name">{{employee.name}}</option>
-              </select>
+            <mat-select>
+                <mat-option class="employee textBody" *ngFor="let employee of employees" value="employee.name">{{employee.name}}</mat-option>
+              </mat-select>
+            <!--<select name="cars" id="cars">
+                <option class="employee textBody" *ngFor="let employee of employees" value="employee.name">{{employee.name}}</option>
+              </select>-->
         </td>
     </tr>
 </table>
 
-<button class="btn">Save</button>
+<button mat-raised-button class="btn save">Save</button>

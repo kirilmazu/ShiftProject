@@ -1,12 +1,12 @@
 <div class="center" *ngFor="let notificationItem of notificationItems">  
-    <div class="card row">
+    <div class="card row objectShedow">
         <div class="column">
             <img class="sized" src="{{notificationItem.iconPath}}" alt="icon"/>
         </div>
 
         <div class="column toStart">
-            <h3>{{notificationItem.header}}</h3>
-            <p>{{notificationItem.body}}</p>
+            <h3 class="textHeat">{{notificationItem.header}}</h3>
+            <p class="textBody">{{notificationItem.body}}</p>
         </div>
     </div>
 </div>

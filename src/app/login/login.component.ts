@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { MatInputModule } from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { Employee } from '../employee';
+import { SheredData } from '../shered-data';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
 
   login():void{
     /**use this.username and  this.password*/
+    SheredData.thisEmployee = new Employee('fName!','lName!','email1@gmail.com','pass','com', 'team', 'Manager');//todo: remove
+    /**get the employee and put him in Employee.thisEmployee */
     this.router.navigate(['/main']);
   }
 

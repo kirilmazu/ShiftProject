@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    height: 100%;
+}
+
+html{
+  width: 100vw;
+}
+
+body.mainBody{
+  background: linear-gradient(45deg, rgb(73, 160, 157, 0.3), rgb(95, 44, 130, 0.6));
 }
 
 div.column {
@@ -13,5 +23,62 @@ div.column {
     display: table;
     clear: both;
   }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+table.requestTable{
+  border-collapse: collapse;
+  border: 1px solid black;
+  font-size: 100%;
+  width: 90%;
+  margin: auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.objectShedow{
+  border-collapse: collapse;
+  border: 1px solid rgba(0,0,0,0.2);
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.textShadow{
+  text-shadow: 0.1px 0.1px 10px rgba(0,0,0,0.8);
+}
+
+th, td{
+  border-collapse: collapse;
+  border: 1px solid rgba(0,0,0,0.2);
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  background-color: rgba(29,178,236,0.1);
+}
+
+.dayHead {
+font-size:2em; 
+font-weight: 300;
+line-height:1em;
+text-align: center;
+color: rgb(23, 79, 105);
+}
+
+.textHead{
+  color: rgb(23, 79, 105);
+  text-shadow: 0.1px 0.1px 1px rgba(0,0,0,0.8);
+}
+
+.textBody{
+  color: rgb(23, 79, 105);
+  text-shadow: 0.1px 0.1px 1px rgba(0,0,0,0.4);
+}
+
+button.btn{
+  width: auto;
+  height: 30px;
+  size: 30px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #1DB2EC; 
+  color: black;
+  font-weight: bold;
+  outline: none;
+  border: 0;
+}

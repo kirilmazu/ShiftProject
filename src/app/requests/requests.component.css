@@ -1,37 +1,11 @@
-table.requestTable{
-    border-collapse: collapse;
-    border: 1px solid black;
-    font-size: 100%;
-    width: 90%;
-    margin: auto;
-}
-
-th, td{
-    border-collapse: collapse;
-    border: 1px solid black;
-}
-
 input.shift{
     width: 99%;
     outline: none;
     text-align: center;
     border: none;
+    background: none;
 }
 
-button.btn{
-    width: auto;
-    height: 30px;
-    size: 30px;
-    border-radius: 8px;
-    text-align: center;
-    cursor: pointer;
-    background-color: #1DB2EC; 
-    color: black;
-    font-weight: bold;
-    outline: none;
-    border: 0;
-    margin-top: 1%;
-  }
 
   button.pn{
     font-size: 20px;
@@ -49,6 +23,8 @@ button.btn{
 
   div.priority{
       background-color: rgb(0, 0, 0, 0.2);
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      background-color: rgba(29,178,236,0.1);
   }
   p.p0{
       color: red;
