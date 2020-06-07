@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee';
 import { Shift } from '../shift';
+import { SheredData } from '../shered-data';
 
 @Component({
   selector: 'app-schedule',
@@ -16,6 +17,8 @@ export class ScheduleComponent implements OnInit {
   isManager = true;//take it from user data
 
   constructor() {
+    /** */
+    //if (SheredData.thisEmployee != (undefined || null) && SheredData.thisEmployee.role=="Manager") this.isManager = true;
     /**get the date of week */
     /**the format of date is MM/dd/yyyy */
     this.firstDayOfWeek = new Date('6/7/2020'); /**todo: get the first day of current week */

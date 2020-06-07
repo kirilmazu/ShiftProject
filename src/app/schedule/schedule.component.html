@@ -1,26 +1,26 @@
 <div class="main">
     <div class="pn">
-        <button class="btn pn" (click)="previousWeek()"><previous week</button>
-        <button class="btn pn" (click)="nextWeek()">next week></button>
+        <button mat-raised-button class="btn pn" (click)="previousWeek()"><previous week</button>
+        <button mat-raised-button class="btn pn" (click)="nextWeek()">next week></button>
     </div>
 <table class="requestTable">
     <tr>
         <!--Day name-->
-          <th *ngFor = "let dayDate of dayDates">
-            {{dayNames[dayDate.getDay()]}}
+          <th *ngFor = "let dayDate of dayDates textShadow">
+            <h2 class="dayHead">{{dayNames[dayDate.getDay()]}}</h2>
           </th>
     </tr>
     <tr>
         <!--Date-->
-        <th *ngFor = "let dayDate of dayDates">
+        <th class="textBody" *ngFor = "let dayDate of dayDates">
             {{dayDate.toLocaleDateString()}}
           </th>
     </tr>
     <tr *ngFor = "let row of shifts">
         <td *ngFor = "let shift of row">
             <div class="column">
-                <p>{{shift.owner.name}}</p>
-                <p>{{shift.getFromTo()}}</p>
+                <p class="textHead">{{shift.owner.name}}</p>
+                <p class="textBody">{{shift.getFromTo()}}</p>
             </div>
         </td>
     </tr>
