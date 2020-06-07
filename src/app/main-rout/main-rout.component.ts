@@ -1,9 +1,10 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ElementRef, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'app-main-rout',
   templateUrl: './main-rout.component.html',
-  styleUrls: ['./main-rout.component.css']
+  styleUrls: ['./main-rout.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MainRoutComponent implements OnInit {
   component_to_show:string;
@@ -13,9 +14,11 @@ export class MainRoutComponent implements OnInit {
   
 
   constructor() {
-    this.component_to_show="Schedule";//set the defult component
+    this.component_to_show="Dashboard";//set the defult component
     this.onChange(this.component_to_show);
    }
+
+   
 
   ngOnInit(): void {
   }

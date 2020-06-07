@@ -1,16 +1,6 @@
 button.btn{
     width: 50%;
-    height: 30px;
-    size: 30px;
-    border-radius: 8px;
-    text-align: center;
-    cursor: pointer;
-    background-color: #1DB2EC; 
-    color: black;
-    font-weight: bold;
-    outline: none;
-    border: 0;
-    margin-bottom: 7%
+    margin-bottom: 3%
   }
 
   input.txt {
@@ -31,13 +21,17 @@ button.btn{
   div.intro{
     text-align: center;
     width: 30%; 
-    height: 100vh; 
+    height: 100vh;
     background-color: #07A2DE;
-    margin-right: 20%;
+    margin-right: 10%;
   }
 
   h1.introHader{
     margin-top: 20%;
+  }
+
+  div.main{
+    overflow: scroll;
   }
 
   div.formBody{
@@ -59,6 +53,7 @@ button.btn{
   }
 
   p.nameHad{
+    text-align: start;
     font-weight: bold;
   }
 
@@ -69,7 +64,7 @@ button.btn{
     }
 
     .formBody{
-      margin-left: 10%;
+      margin-left: 5%;
     }
   }
 
@@ -81,6 +76,20 @@ button.btn{
 
   @media only screen and (min-height: 710px) {
     .formBody{
-      margin-top: 15%;
+      margin-top: 10%;
     }
+  }
+
+  .example-full-width {
+    width: 60%;
+  }
+
+  .fName-width{
+    width: 27%;
+    margin-left: 20%;
+  }
+
+  .lName-width{
+    width: 27%;
+    margin-left: 6%;
   }
