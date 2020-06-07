@@ -22,6 +22,7 @@ export class BuildScheduleComponent implements OnInit {
   constructor() { 
     //this data only for tests!
     this.firstDayOfWeek = new Date('6/7/2020'); /**todo: get the first day of current week */
+    //this.getFirstDateOfWeek(new Date());
     /**update the sheduale table*/
     this.updateDates(this.firstDayOfWeek);
     this.employees = [this.employee1, this.employee2, this.employee3]; //Take all employees
@@ -50,6 +51,17 @@ export class BuildScheduleComponent implements OnInit {
   updateDates(firstDay:Date):void{
     this.dayDates = [firstDay, this.addDays(firstDay, 1), this.addDays(firstDay, 2), this.addDays(firstDay, 3),
                     this.addDays(firstDay, 4), this.addDays(firstDay, 5), this.addDays(firstDay, 6)];
+  }
+
+  getFirstDateOfWeek(date: Date) : Date{
+    var _date = date;
+    
+    while (_date.getDay()!=1){
+      _date.setDate(_date.getDate()-1);
+      console.debug(_date);
+    }
+    console.debug("Finished" + _date);
+    return _date;
   }
 
 
