@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import { SheredData } from '../shered-data';
+import { Employee } from '../employee';
 
 @Component({
   selector: 'app-register',
@@ -27,19 +29,56 @@ export class RegisterComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,private router:Router) {
     this.introHader = "Shift project";
-    this.introBody = "This site is a finle project for web course, few words about the site...."
+    this.introBody = "This site is a finle project for web course, few words about the site.... but it can be longer so let see what hapand ............................................................................................... so long"
    }
 
   ngOnInit(): void {
   }
 
   SingUp():void{
-    /**out put for test */
-    var res = "email: " + this.email + ", user: " + this.username + ", pass: " + this.password + ", role: " + this.role;
-    alert("sing up\n"+res);
     /*chek input*/
-    /*save new user*/ 
-    this.router.navigate(['/main']);
+    var result = this.checkInput();
+    //if the check pass
+    if(result){
+      //fill not required if empty
+      if(this.team == (undefined || null)) this.team = "";
+      //get employee data
+      var newEmployee = new Employee(this.firstName, this.lastName, this.email, this.password, this.company,this.team, this.role);
+      /**save the employee to data storage */
+      this.saveEmployee(newEmployee);
+      //login with the new user
+      SheredData.thisEmployee = newEmployee;
+      alert("Hello " + this.firstName + " " + this.lastName + " welcome to ShiftProject.");
+      this.router.navigate(['/main']);
+    }
+  }
+
+  checkInput():boolean{
+    if(this.email == (undefined || null) || this.username == (undefined || null) 
+    || this.firstName == (undefined || null) || this.lastName == (undefined || null) ||
+     this.password == (undefined || null) || this.role == (undefined || null)){
+      alert("please fill all the required filds (with the *)");
+      return false;
+    }
+    else{
+      if(this.email.trim() == "" || this.username.trim() == "" 
+      || this.firstName.trim() == "" || this.lastName.trim() == "" ||
+     this.password.trim() == "" || this.role == ""){
+      alert("please fill all the required filds (with the *) you can't fill just spasess.");
+      return false;
+    }
+    }
+
+    if(this.password != this.rePassword){
+      alert("The password don't much");
+      return false;
+    }
+
+    return true;
+  }
+
+  saveEmployee(employee:Employee):void{
+    /**todo: implement*/
   }
 
   cansel():void{

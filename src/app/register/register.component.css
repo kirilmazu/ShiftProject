@@ -30,12 +30,20 @@ button.btn{
     margin-top: 20%;
   }
 
+  p.introBody{
+    text-overflow: initial;
+  }
+
   div.main{
     overflow: scroll;
   }
 
   div.formBody{
     text-align: center;
+  }
+
+  div.NameW{
+    width: 45%;
   }
 
   div.devider{
@@ -46,6 +54,7 @@ button.btn{
 
   h1.formBodyHader{
     color: rgb(7, 102, 139);
+    font-weight: bold;
   }
 
   div.nameForm{
