@@ -1,63 +1,16 @@
-/*table.requestTable{
-    border-collapse: collapse;
-    border: 1px solid black;
-    font-size: 100%;
-    width: 90%;
-    margin: auto;
-}*/
-
-/*th, td{
-    border-collapse: collapse;
-    border: 1px solid black;
-}*/
-
-input.shift{
-    width: 99%;
-    outline: none;
-    text-align: center;
-    border: none;
+input.shift {
+  width: 99%;
+  outline: none;
+  text-align: center;
+  border: none;
 }
 
+button.save {
+  margin-top: 1%;
+  margin-left: 50%;
+}
 
-  button.pn{
-    font-size: 20px;
-    margin-left: 1%;
-  }
-
-  button.save{
-    margin-top: 1%;
-    margin-left: 50%;
-  }
-
-  div.main{
-      width: 100%;
-  }
-
-  div.pn{
-    margin-left: 40%;
-    margin-bottom: 2%;
-  }
-
-  option.employee{
-    width: 100%;
-    font-size: 30px;
-  }
-
-  div.priority{
-      background-color: rgb(0, 0, 0, 0.2);
-  }
-  p.p0{
-      color: red;
-  }
-  p.p1{
-    color: orange;
-  }
-  p.p2{
-    color: yellow;
-  }
-  p.p3{
-    color: blue;
-  }
-  p.p4{
-    color: green;
-  }
+option.employee {
+  width: 100%;
+  font-size: 30px;
+}
