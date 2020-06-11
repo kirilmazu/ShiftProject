@@ -18,26 +18,6 @@ button.btn{
     text-align: center;
   }
 
-  div.intro{
-    text-align: center;
-    width: 30%; 
-    height: 100vh;
-    background-color: #07A2DE;
-    margin-right: 10%;
-  }
-
-  h1.introHader{
-    margin-top: 20%;
-  }
-
-  p.introBody{
-    text-overflow: initial;
-  }
-
-  div.main{
-    overflow: scroll;
-  }
-
   div.formBody{
     text-align: center;
   }
@@ -52,11 +32,6 @@ button.btn{
     margin-bottom: 2%;
   }
 
-  h1.formBodyHader{
-    color: rgb(7, 102, 139);
-    font-weight: bold;
-  }
-
   div.nameForm{
     text-align: start;
   }
@@ -67,7 +42,7 @@ button.btn{
   }
 
 
-  @media only screen and (max-width: 750px) {
+  @media only screen and (max-width: 1300px) {
     .intro {
       display: none;
     }
@@ -89,10 +64,6 @@ button.btn{
     }
   }
 
-  .example-full-width {
-    width: 60%;
-  }
-
   .fName-width{
     width: 27%;
     margin-left: 20%;
@@ -101,4 +72,8 @@ button.btn{
   .lName-width{
     width: 27%;
     margin-left: 6%;
+  }
+
+  .field-width{
+    width: 60%;
   }
