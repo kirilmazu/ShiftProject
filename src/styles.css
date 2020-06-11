@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
     height: 100%;
 }
 
@@ -14,15 +12,15 @@ body.mainBody{
 }
 
 div.column {
-      float: left;
-      padding: 10px;
-  }
+  float: left;
+  /*padding: 10px;*/
+}
 
-  div.row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+div.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 
 table.requestTable{
