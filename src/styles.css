@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
     height: 100%;
 }
 
@@ -14,15 +12,14 @@ body.mainBody{
 }
 
 div.column {
-      float: left;
-      padding: 10px;
-  }
+  float: left;
+}
 
-  div.row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+div.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 
 table.requestTable{
@@ -81,4 +78,39 @@ button.btn{
   font-weight: bold;
   outline: none;
   border: 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+div.intro{
+  text-align: center;
+  width: 30%; 
+  height: 100vh;
+  background-color: #07A2DE;
+  margin-right: 10%;
+}
+
+h1.introHader{
+  margin-top: 20%;
+}
+
+h1.Header{
+  color: rgb(7, 102, 139);
+  font-weight: bold;
+}
+
+p.introBody{
+  padding: 1%;
+}
+
+button.pn {
+  font-size: 20px;
+  margin-left: 1%;
+}
+
+div.pn {
+  margin-left: 40%;
+  margin-bottom: 2%;
 }
