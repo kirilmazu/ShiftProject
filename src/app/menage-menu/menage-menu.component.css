@@ -4,8 +4,13 @@ div.card{
     outline: thick;
     height: 10%;
     width: 28%;
-    background-color: rgba(103, 176, 194, 0.4);
+    background-color: rgba(103, 176, 194, 0.2);
     margin-left: 2%;
+    padding: 1%;
+}
+
+div.card:hover{
+  background-color: rgba(103, 176, 194, 0.6);
 }
 
 img.center {

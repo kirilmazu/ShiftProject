@@ -9,8 +9,10 @@ import { SheredData } from '../shered-data';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  //imput filds
   username:string;
   password:string;
+  //hide or not the password
   hide = true;
 
   //intro text
@@ -26,14 +28,34 @@ export class LoginComponent implements OnInit {
   }
 
   login():void{
-    /**use this.username and  this.password*/
-    SheredData.thisEmployee = new Employee('fName!','lName!','email1@gmail.com','pass','com', 'team', 'Manager');//todo: remove
-    /**get the employee and put him in Employee.thisEmployee */
-    this.router.navigate(['/main']);
+    //save the employee in the global var
+    SheredData.thisEmployee = this.checkUser(this.username, this.password);
+    //if employee exist go to main 
+    if(SheredData.thisEmployee != null) this.router.navigate(['/main']);
   }
 
+  //get user name and password and if he exist return the employee data
+  //if employee not found return null
+  checkUser(username:string, password:string): Employee{
+    var employee: Employee;
+    //check if employee exist in the data
+    /**TODO: replase this line by get from server */
+    employee = new Employee('fName!','lName!','email1@gmail.com','pass','com', 'team', 'Manager');//for test only
+    return employee;
+  }
+
+  //check if entered user name and password.
+  checkInput():boolean{
+    if(this.username == (undefined || null) || this.password == (undefined || null) || this.username.trim() == "" || this.password.trim() == "") {
+      alert("Please enter user name and password.");
+      return false;
+    }
+    return true;
+  }
+
+  //register button clicked.
   goToRegister(): void{
+    //go to register page.
     this.router.navigate(['/register']);
   }
-
 }
