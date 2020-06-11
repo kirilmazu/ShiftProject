@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ElementRef, Renderer2} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-main-rout',
@@ -11,14 +11,11 @@ export class MainRoutComponent implements OnInit {
   show_dashboard = true;
   show_schedule = false;
   show_requests = false;
-  
 
   constructor() {
     this.component_to_show="Dashboard";//set the defult component
     this.onChange(this.component_to_show);
    }
-
-   
 
   ngOnInit(): void {
   }
@@ -28,6 +25,4 @@ export class MainRoutComponent implements OnInit {
       this.show_schedule = toShow=="Schedule";
       this.show_requests = toShow=="Requests";
   }
-
-  
 }

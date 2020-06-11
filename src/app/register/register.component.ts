@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
       //get employee data
       var newEmployee = new Employee(this.firstName, this.lastName, this.email, this.password, this.company,this.team, this.role);
       /**save the employee to data storage */
-      this.saveEmployee(newEmployee);
+      this.saveEmployee(newEmployee, this.username);
       //login with the new user
       SheredData.thisEmployee = newEmployee;
       alert("Hello " + this.firstName + " " + this.lastName + " welcome to ShiftProject.");
@@ -77,7 +77,7 @@ export class RegisterComponent implements OnInit {
     return true;
   }
 
-  saveEmployee(employee:Employee):void{
+  saveEmployee(employee:Employee, username:string):void{
     /**todo: implement*/
   }
 
