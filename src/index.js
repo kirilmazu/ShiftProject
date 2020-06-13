@@ -1,3 +1,6 @@
+const bearerToken = require('express-bearer-token');
+const oktaAuth = require('./auth');
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -6,9 +9,9 @@ const events = require('./events');
 
 const connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'timeline',
+  user     : 'user',
   password : 'password',
-  database : 'timeline'
+  database : 'shiftProj'
 });
 
 connection.connect();
@@ -23,3 +26,10 @@ const app = express()
 app.listen(port, () => {
   console.log(`Express server listening on port ${port}`);
 });
+
+const app = express()
+  .use(cors())
+  .use(bodyParser.json())
+  .use(bearerToken())
+  .use(oktaAuth)
+  .use(events(connection));
