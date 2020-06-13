@@ -23,9 +23,10 @@
     "@angular/router": "~9.1.7",
     "@material/form-field": "^6.0.0",
     "@types/express": "^4.17.6",
-    "express": "^4.17.1",
+    "cors": "2.8.5",
+    "express": "4.17.1",
     "jquery": "^3.5.1",
-    "mysql": "^2.18.1",
+    "mysql": "2.17.1",
     "require": "^2.4.20",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
@@ -51,5 +52,17 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirilmazu/ShiftProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kirilmazu/ShiftProject/issues"
+  },
+  "homepage": "https://github.com/kirilmazu/ShiftProject#readme"
 }
