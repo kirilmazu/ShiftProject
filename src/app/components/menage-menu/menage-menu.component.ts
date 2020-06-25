@@ -15,14 +15,17 @@ export class MenageMenuComponent implements OnInit {
   }
 
   DashboardClick():void{
+    //show the Dashboard component in the main page
     this.toChange.emit("Dashboard");
   }
 
   ScheduleClick():void{
+    //Show the Schedule component in the main page
     this.toChange.emit("Schedule");
   }
 
   RequestsClick():void{
+    //show the Requests component in the main page
     this.toChange.emit("Requests");
   }
 }

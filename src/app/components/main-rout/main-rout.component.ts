@@ -7,22 +7,23 @@ import { Component, OnInit, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class MainRoutComponent implements OnInit {
-  component_to_show:string;
-  show_dashboard = true;
-  show_schedule = false;
-  show_requests = false;
+  //components to show
+  hide_dashboard:boolean;
+  hide_schedule:boolean;
+  hide_requests:boolean;
 
   constructor() {
-    this.component_to_show="Dashboard";//set the defult component
-    this.onChange(this.component_to_show);
+    //Set the defult component to show
+    this.onChange("Dashboard");
    }
 
   ngOnInit(): void {
   }
 
+  //show only the selected component
   onChange(toShow:string){
-      this.show_dashboard = toShow=="Dashboard";
-      this.show_schedule = toShow=="Schedule";
-      this.show_requests = toShow=="Requests";
+      this.hide_dashboard = toShow != "Dashboard";
+      this.hide_schedule = toShow != "Schedule";
+      this.hide_requests = toShow != "Requests";
   }
 }

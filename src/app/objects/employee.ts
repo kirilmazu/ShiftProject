@@ -1,8 +1,9 @@
+
 export class Employee {
     name: string;
 
     firstName: string;
-    LastName: string;
+    lastName: string;
     email: string;
     password: string;
     company: string;
@@ -11,7 +12,7 @@ export class Employee {
 
     constructor(firstName: string,lastName:string, email:string, password:string, company:string, team:string, role:string){
         this.firstName = firstName;
-        this.LastName = lastName;
+        this.lastName = lastName;
         this.name = firstName + " " + lastName;
         this.email = email;
         this.password = password;

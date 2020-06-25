@@ -5,16 +5,17 @@ import { MatSliderModule } from '@angular/material/slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { MainRoutComponent } from './main-rout/main-rout.component';
-import { HeaderComponent } from './header/header.component';
-import { MenageMenuComponent } from './menage-menu/menage-menu.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { RequestsComponent } from './requests/requests.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { MainRoutComponent } from './components/main-rout/main-rout.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MenageMenuComponent } from './components/menage-menu/menage-menu.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { RequestsComponent } from './components/requests/requests.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ScheduleComponent } from './schedule/schedule.component';
-import { BuildScheduleComponent } from './build-schedule/build-schedule.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+import { BuildScheduleComponent } from './components/build-schedule/build-schedule.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
@@ -52,7 +53,7 @@ import {MatTableModule} from '@angular/material/table';
     MatGridListModule,
     MatSelectModule,
     MatTableModule,
-    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

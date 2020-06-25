@@ -1,5 +1,4 @@
 import { Employee } from './employee';
-import { from } from 'rxjs';
 
 export class Shift {
     owner: Employee;

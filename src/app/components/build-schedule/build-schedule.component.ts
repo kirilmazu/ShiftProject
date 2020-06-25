@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../employee';
-import { Request } from '../request';
-import { Shift } from '../shift';
-import {WeekReqests} from '../week-reqests';
+import { Employee } from 'src/app/objects/employee';
+import { Request } from 'src/app/objects/request';
+import { Shift } from 'src/app/objects/shift';
+import {WeekReqests} from 'src/app/objects/week-reqests';
 
 @Component({
   selector: 'app-build-schedule',
