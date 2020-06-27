@@ -1,25 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Shift } from '../objects/shift';
+import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { SheredData } from '../shered-data';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Request } from '../objects/request';
+import { Employee } from '../objects/employee';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShiftService {
-  baseurl: string = "http://localhost:3000/shift";
+export class RequestService {
+  baseurl: string = "http://localhost:3000/requests";
 
   constructor(private httpClient : HttpClient) { }
 
-  async getshifts(){
+  async getrequests(){
     return this.httpClient.get(this.baseurl + '/').subscribe(results => {
       console.log(results);
-      var shifts: Array<Shift> = [];
+      var requests: Array<Request> = [];
+      var employee:Employee;
       for (var res in results) {
         var jResult = JSON.parse(JSON.stringify(results[res]));
-        shifts.push(new Shift(jResult['ownerName'], jResult['from'], jResult['to']));
+        employee = Employee.getEmployeeByID(jResult['ID'],SheredData.employees);
+        requests.push(new Request(jResult['shift'],  jResult['priority'], employee, jResult['date']));
       }
-      SheredData.shifts = shifts;
+      SheredData.requests = requests;
     }, (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
         console.log("Client-side error occured.");
@@ -30,12 +34,13 @@ export class ShiftService {
     });
   }
 
-  addShift(shift:Shift){
-    this.httpClient.post(this.baseurl+'/addShift',{
-      'ownerID': 0,
-      'ownerName': shift.ownerName,
-      'from': shift.from,
-      'to': shift.to,
+  addRequest(request:Request){
+    this.httpClient.post(this.baseurl+'/addRequests',{
+      'ownerID': request.owner.employeeID,
+      'ownerName': request.owner.name,
+      'date': request.date,
+      'shift': request.shift,
+      'priority': request.priority,
     }).subscribe(
       res => {
         console.log(res);

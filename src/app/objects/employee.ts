@@ -23,9 +23,15 @@ export class Employee {
         this.employeeID = employeeid;
     }
 
-    static getEmployeeID(employeeName:string, employees:Array<Employee>){
+    static getEmployeeID(employeeName:string, employees:Array<Employee>):number{
         for(var emp in employees){
             if(employees[emp].name == employeeName) return employees[emp].employeeID;
+        }
+    }
+
+    static getEmployeeByID(employeeID:number, employees:Array<Employee>):Employee{
+        for(var emp in employees){
+            if(employees[emp].employeeID == employeeID) return employees[emp];
         }
     }
 }

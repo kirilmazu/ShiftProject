@@ -1,12 +1,14 @@
 import { Employee } from './objects/employee';
 import { NotificationItem } from './objects/notification-item';
 import { Shift } from './objects/shift';
+import { Request } from './objects/request';
 
 export class SheredData {
   static thisEmployee:Employee;
   static notifications:Array<NotificationItem>;
   static employees:Array<Employee>;
   static shifts:Array<Shift>;
+  static requests:Array<Request>;
 
   //Get the date + [number] day's
   static addDays(date: Date, days: number): Date {
