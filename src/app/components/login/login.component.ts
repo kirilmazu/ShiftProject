@@ -4,6 +4,7 @@ import { SheredData } from 'src/app/shered-data';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Employee } from 'src/app/objects/employee';
+import { InitService } from 'src/app/services/init.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
   introHader:string;
   introBody:string;
 
-  constructor(private route:ActivatedRoute,private router:Router, private user:EmployeeService) {
+  constructor(private route:ActivatedRoute,private router:Router, private user:EmployeeService, private init:InitService) {
     this.introHader = "Shift project";
     this.introBody = "This site is a finle project for web course, few words about the site...."
    }
@@ -29,10 +30,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login():void{
+  async login(){
     var employee: Employee;
     //check if employee exist in the data
-    this.user.getEmployee(this.email, this.password).subscribe(result => {
+    this.user.getEmployee(this.email, this.password).subscribe(async result => {
       var jResult = JSON.parse(JSON.stringify(result[0]));
       console.log(result);
       employee = new Employee(jResult["firstName"], jResult['lastname'], jResult['email'], jResult['password'],
@@ -43,6 +44,9 @@ export class LoginComponent implements OnInit {
       } else {
         SheredData.thisEmployee = employee
         alert('loged in successfuly');
+        await this.init.doInit();
+        //TODO: replase it
+        await this.delay(3000);//give time to get data from the server
         this.router.navigate(['/main']);
       }
       }, (err: HttpErrorResponse) => {
@@ -52,35 +56,6 @@ export class LoginComponent implements OnInit {
           console.log("Server-side error occured.");
         }
       });
-  }
-
-  //get user name and password and if he exist return the employee data
-  //if employee not found return null
-  checkUser(email:string, password:string): Employee{
-    var employee: Employee;
-    //check if employee exist in the data
-    this.user.getEmployee(email, password).subscribe(result => {
-      var jResult = JSON.parse(JSON.stringify(result[0]));
-      console.log(result);
-      employee = new Employee(jResult["firstName"], jResult['lastname'], jResult['email'], jResult['password'],
-       jResult['company'], jResult['team'], jResult['role']);
-      console.log(employee);  
-      if(employee == (undefined || null)){
-
-      } else {
-        SheredData.thisEmployee = employee
-        alert('loged in successfuly');
-      }
-      }, (err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-          console.log("Client-side error occured.");
-        } else {
-          console.log("Server-side error occured.");
-        }
-      });
-    console.log("return:");
-    console.log(employee); 
-    return employee;
   }
 
   //check if entered user name and password.
@@ -96,5 +71,9 @@ export class LoginComponent implements OnInit {
   goToRegister(): void{
     //go to register page.
     this.router.navigate(['/register']);
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 }

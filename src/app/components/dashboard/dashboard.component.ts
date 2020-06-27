@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationItem } from 'src/app/notification-item';
+import { NotificationItem } from 'src/app/objects/notification-item';
+import { SheredData } from 'src/app/shered-data';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,14 +16,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.notificationItems = this.getNotifications();
+    console.log(this.notificationItems);
   }
 
   getNotifications():Array<NotificationItem>{
-    //TODO: get all notifications for this user from the data base.
-    //TODO: remove, this data it for test only.
-      return [
-        new NotificationItem("../assets/notification.png", "New shift", "this is message about new shift"),
-        new NotificationItem("../assets/calendar 2.png", "New week", "Pleas fill the next week request")
-      ]
+    return SheredData.notifications;
   }
 }

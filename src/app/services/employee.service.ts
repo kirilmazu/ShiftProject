@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Employee } from '../objects/employee';
+import { SheredData } from '../shered-data';
 
 
 @Injectable({
@@ -18,6 +19,26 @@ export class EmployeeService {
       'password': password,
   };
     return this.httpClient.post(this.baseurl+'/login',user);    
+  }
+
+  async getEmployees(){
+    return await this.httpClient.get(this.baseurl+'/',).subscribe(result => {
+      console.log(result);
+      var employees:Array<Employee> = [];
+      var jResult;
+      for(var res in result){
+        jResult = JSON.parse(JSON.stringify(res));
+        employees.push(new Employee(jResult["firstName"], jResult['lastname'], jResult['email'], jResult['password'],
+        jResult['company'], jResult['team'], jResult['role']));
+      }
+      SheredData.employees = employees;
+    }, (err: HttpErrorResponse) => {
+      if (err.error instanceof Error) {
+        console.log("Client-side error occured.");
+      } else {
+        console.log("Server-side error occured.");
+      }
+    });   
   }
 
 
