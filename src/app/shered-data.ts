@@ -1,10 +1,12 @@
 import { Employee } from './objects/employee';
 import { NotificationItem } from './objects/notification-item';
+import { Shift } from './objects/shift';
 
 export class SheredData {
   static thisEmployee:Employee;
   static notifications:Array<NotificationItem>;
   static employees:Array<Employee>;
+  static shifts:Array<Shift>;
 
   //Get the date + [number] day's
   static addDays(date: Date, days: number): Date {
@@ -19,6 +21,4 @@ export class SheredData {
     newDay.setHours(date.getHours() + hours);
     return newDay;
   }
-
-    
 }

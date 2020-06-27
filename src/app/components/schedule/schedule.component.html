@@ -19,7 +19,7 @@
     <tr *ngFor = "let row of shifts">
         <td *ngFor = "let shift of row">
             <div class="column">
-                <p class="textHead">{{shift.owner.name}}</p>
+                <p class="textHead">{{shift.ownerName}}</p>
                 <p class="textBody">{{shift.getFromTo()}}</p>
             </div>
         </td>

@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
       //fill not required if empty
       if(this.team == (undefined || null)) this.team = "";
       //get employee data
-      var newEmployee = new Employee(this.firstName, this.lastName, this.email, this.password, this.company,this.team, this.role);
+      var newEmployee = new Employee(this.firstName, this.lastName, this.email, this.password, this.company,this.team, this.role,0);
       //save the employee to data storage
       this.saveEmployee(newEmployee);
       //login with the new user

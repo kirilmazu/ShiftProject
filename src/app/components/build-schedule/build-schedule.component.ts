@@ -59,9 +59,9 @@ export class BuildScheduleComponent implements OnInit {
 
 
   /**For test only */
- employee1 = new Employee('fName1','lName1','email1@gmail.com','pass','com', 'team', 'role');
- employee2 = new Employee('fName2','lName2','email2@gmail.com','pass','com', 'team', 'role');
- employee3 = new Employee('fName3','lName3','email3@gmail.com','pass','com', 'team', 'role');
+ employee1 = new Employee('fName1','lName1','email1@gmail.com','pass','com', 'team', 'role',1);
+ employee2 = new Employee('fName2','lName2','email2@gmail.com','pass','com', 'team', 'role',2);
+ employee3 = new Employee('fName3','lName3','email3@gmail.com','pass','com', 'team', 'role',3);
 
  shiftATime = new Date('6/7/2020 8:00:00');
  shiftBTime = new Date('6/7/2020 16:00:00');
@@ -69,22 +69,22 @@ export class BuildScheduleComponent implements OnInit {
  
 shifts = [
   [
-    new Shift(this.employee1,this.shiftATime,this.addHours(this.shiftATime, 8)),
-    new Shift(this.employee1,this.addDays(this.shiftATime,1),this.addDays(this.addHours(this.shiftATime, 8),1)),
-    new Shift(this.employee2,this.addDays(this.shiftATime,2),this.addDays(this.addHours(this.shiftATime, 8),2)),
-    new Shift(this.employee2,this.addDays(this.shiftATime,3),this.addDays(this.addHours(this.shiftATime, 8),3)),
-    new Shift(this.employee1,this.addDays(this.shiftATime,4),this.addDays(this.addHours(this.shiftATime, 8),4)),
-    new Shift(this.employee3,this.addDays(this.shiftATime,5),this.addDays(this.addHours(this.shiftATime, 8),5)),
-    new Shift(this.employee3,this.addDays(this.shiftATime,6),this.addDays(this.addHours(this.shiftATime, 8),6)),
+    new Shift(this.employee1.name,this.shiftATime,this.addHours(this.shiftATime, 8)),
+    new Shift(this.employee1.name,this.addDays(this.shiftATime,1),this.addDays(this.addHours(this.shiftATime, 8),1)),
+    new Shift(this.employee2.name,this.addDays(this.shiftATime,2),this.addDays(this.addHours(this.shiftATime, 8),2)),
+    new Shift(this.employee2.name,this.addDays(this.shiftATime,3),this.addDays(this.addHours(this.shiftATime, 8),3)),
+    new Shift(this.employee1.name,this.addDays(this.shiftATime,4),this.addDays(this.addHours(this.shiftATime, 8),4)),
+    new Shift(this.employee3.name,this.addDays(this.shiftATime,5),this.addDays(this.addHours(this.shiftATime, 8),5)),
+    new Shift(this.employee3.name,this.addDays(this.shiftATime,6),this.addDays(this.addHours(this.shiftATime, 8),6)),
   ],
   [
-    new Shift(this.employee2,this.shiftBTime,this.addHours(this.shiftBTime, 8)),
-    new Shift(this.employee3,this.addDays(this.shiftBTime,1),this.addDays(this.addHours(this.shiftBTime, 8),1)),
-    new Shift(this.employee3,this.addDays(this.shiftBTime,2),this.addDays(this.addHours(this.shiftBTime, 8),2)),
-    new Shift(this.employee3,this.addDays(this.shiftBTime,3),this.addDays(this.addHours(this.shiftBTime, 8),3)),
-    new Shift(this.employee2,this.addDays(this.shiftBTime,4),this.addDays(this.addHours(this.shiftBTime, 8),4)),
-    new Shift(this.employee2,this.addDays(this.shiftBTime,5),this.addDays(this.addHours(this.shiftBTime, 8),5)),
-    new Shift(this.employee1,this.addDays(this.shiftBTime,6),this.addDays(this.addHours(this.shiftBTime, 8),6)),
+    new Shift(this.employee2.name,this.shiftBTime,this.addHours(this.shiftBTime, 8)),
+    new Shift(this.employee3.name,this.addDays(this.shiftBTime,1),this.addDays(this.addHours(this.shiftBTime, 8),1)),
+    new Shift(this.employee3.name,this.addDays(this.shiftBTime,2),this.addDays(this.addHours(this.shiftBTime, 8),2)),
+    new Shift(this.employee3.name,this.addDays(this.shiftBTime,3),this.addDays(this.addHours(this.shiftBTime, 8),3)),
+    new Shift(this.employee2.name,this.addDays(this.shiftBTime,4),this.addDays(this.addHours(this.shiftBTime, 8),4)),
+    new Shift(this.employee2.name,this.addDays(this.shiftBTime,5),this.addDays(this.addHours(this.shiftBTime, 8),5)),
+    new Shift(this.employee1.name,this.addDays(this.shiftBTime,6),this.addDays(this.addHours(this.shiftBTime, 8),6)),
   ]
 ]
 

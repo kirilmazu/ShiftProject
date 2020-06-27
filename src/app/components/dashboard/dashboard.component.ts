@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationItem } from 'src/app/objects/notification-item';
 import { SheredData } from 'src/app/shered-data';
+import { NotificationService } from 'src/app/services/notificatnotification.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,7 @@ export class DashboardComponent implements OnInit {
   //list of all events to show in the dashboard 
   notificationItems: Array<NotificationItem>;
 
-  constructor() {
+  constructor(private notifications:NotificationService) {
   }
 
   ngOnInit(): void {
@@ -20,6 +21,10 @@ export class DashboardComponent implements OnInit {
   }
 
   getNotifications():Array<NotificationItem>{
+    if(SheredData.notifications == (null || undefined)){
+      //TODO: wait to finish
+      this.notifications.getNotifications();
+    }
     return SheredData.notifications;
   }
 }

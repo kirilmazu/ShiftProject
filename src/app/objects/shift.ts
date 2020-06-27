@@ -1,13 +1,13 @@
 import { Employee } from './employee';
 
 export class Shift {
-    owner: Employee;
+    ownerName: String;
     from: Date;
     to:   Date;
     duration: number;
 
-    constructor(owner:Employee, from:Date, to:Date){
-        this.owner = owner;
+    constructor(ownerName:String, from:Date, to:Date){
+        this.ownerName = ownerName;
         this.from = from;
         this.to = to;
     }

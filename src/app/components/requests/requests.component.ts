@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/objects/employee';
 import { Request } from 'src/app/objects/request';
+import { SheredData } from 'src/app/shered-data';
 
 @Component({
   selector: 'app-requests',
@@ -73,7 +74,8 @@ export class RequestsComponent implements OnInit {
   /**For tests*/
   getThisEmployee():Employee{
     /**Todo: get the loged in employee */
-    return new Employee('fName','lName','email@gmail.com','pass','com', 'team', 'role');/**for test only */
+    if(SheredData.thisEmployee != (null || undefined)) return SheredData.thisEmployee;
+    return new Employee('fName','lName','email@gmail.com','pass','com', 'team', 'role',1);/**for test only */
   }
 
   buildRequstsForTest():Array<Array<Request>>{

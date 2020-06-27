@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       var jResult = JSON.parse(JSON.stringify(result[0]));
       console.log(result);
       employee = new Employee(jResult["firstName"], jResult['lastname'], jResult['email'], jResult['password'],
-       jResult['company'], jResult['team'], jResult['role']);
+       jResult['company'], jResult['team'], jResult['role'],jResult['ID']);
       console.log(employee);  
       if(employee == (undefined || null) || employee.firstName == (undefined || null) ){
         alert('Login failed.');

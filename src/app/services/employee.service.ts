@@ -29,7 +29,8 @@ export class EmployeeService {
       for(var res in result){
         jResult = JSON.parse(JSON.stringify(res));
         employees.push(new Employee(jResult["firstName"], jResult['lastname'], jResult['email'], jResult['password'],
-        jResult['company'], jResult['team'], jResult['role']));
+        jResult['company'], jResult['team'], jResult['role'], jResult['ID']));
+
       }
       SheredData.employees = employees;
     }, (err: HttpErrorResponse) => {

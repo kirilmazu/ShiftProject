@@ -57,31 +57,31 @@ export class ScheduleComponent implements OnInit {
 
 
   /**For test only */
- employee1 = new Employee('fName1','lName','email1@gmail.com','pass','com', 'team', 'role');
- employee2 = new Employee('fName2','lName','email2@gmail.com','pass','com', 'team', 'role');
- employee3 = new Employee('fName3','lName','email3@gmail.com','pass','com', 'team', 'role');
+ employee1 = new Employee('fName1','lName','email1@gmail.com','pass','com', 'team', 'role',1);
+ employee2 = new Employee('fName2','lName','email2@gmail.com','pass','com', 'team', 'role',2);
+ employee3 = new Employee('fName3','lName','email3@gmail.com','pass','com', 'team', 'role',3);
 
  shiftATime = new Date('6/7/2020 8:00:00');
  shiftBTime = new Date('6/7/2020 16:00:00');
 
 shifts = [
   [
-    new Shift(this.employee1,this.shiftATime,SheredData.addHours(this.shiftATime, 8)),
-    new Shift(this.employee1,SheredData.addDays(this.shiftATime,1),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),1)),
-    new Shift(this.employee2,SheredData.addDays(this.shiftATime,2),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),2)),
-    new Shift(this.employee2,SheredData.addDays(this.shiftATime,3),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),3)),
-    new Shift(this.employee1,SheredData.addDays(this.shiftATime,4),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),4)),
-    new Shift(this.employee3,SheredData.addDays(this.shiftATime,5),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),5)),
-    new Shift(this.employee3,SheredData.addDays(this.shiftATime,6),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),6)),
+    new Shift(this.employee1.name,this.shiftATime,SheredData.addHours(this.shiftATime, 8)),
+    new Shift(this.employee1.name,SheredData.addDays(this.shiftATime,1),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),1)),
+    new Shift(this.employee2.name,SheredData.addDays(this.shiftATime,2),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),2)),
+    new Shift(this.employee2.name,SheredData.addDays(this.shiftATime,3),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),3)),
+    new Shift(this.employee1.name,SheredData.addDays(this.shiftATime,4),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),4)),
+    new Shift(this.employee3.name,SheredData.addDays(this.shiftATime,5),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),5)),
+    new Shift(this.employee3.name,SheredData.addDays(this.shiftATime,6),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),6)),
   ],
   [
-    new Shift(this.employee2,this.shiftBTime,SheredData.addHours(this.shiftBTime, 8)),
-    new Shift(this.employee3,SheredData.addDays(this.shiftBTime,1),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),1)),
-    new Shift(this.employee3,SheredData.addDays(this.shiftBTime,2),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),2)),
-    new Shift(this.employee3,SheredData.addDays(this.shiftBTime,3),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),3)),
-    new Shift(this.employee2,SheredData.addDays(this.shiftBTime,4),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),4)),
-    new Shift(this.employee2,SheredData.addDays(this.shiftBTime,5),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),5)),
-    new Shift(this.employee1,SheredData.addDays(this.shiftBTime,6),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),6)),
+    new Shift(this.employee2.name,this.shiftBTime,SheredData.addHours(this.shiftBTime, 8)),
+    new Shift(this.employee3.name,SheredData.addDays(this.shiftBTime,1),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),1)),
+    new Shift(this.employee3.name,SheredData.addDays(this.shiftBTime,2),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),2)),
+    new Shift(this.employee3.name,SheredData.addDays(this.shiftBTime,3),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),3)),
+    new Shift(this.employee2.name,SheredData.addDays(this.shiftBTime,4),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),4)),
+    new Shift(this.employee2.name,SheredData.addDays(this.shiftBTime,5),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),5)),
+    new Shift(this.employee1.name,SheredData.addDays(this.shiftBTime,6),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),6)),
   ]
 ]
 
