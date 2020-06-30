@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { NotificationItem } from '../objects/notification-item';
-import { SheredData } from '../shered-data';
 
 @Injectable({
   providedIn: 'root'

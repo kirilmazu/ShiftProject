@@ -61,7 +61,8 @@ export class BuildScheduleComponent implements OnInit {
     console.log(this.shifts);
     for(var val1 in this.shifts){
       for(var val2 in this.shifts[val1]){
-        this.shiftsService.addShift(this.shifts[val1][val2]);
+        if(this.shifts[val1][val2].ownerName != "undefined")
+          this.shiftsService.addShift(this.shifts[val1][val2]);
       }
     }
   }

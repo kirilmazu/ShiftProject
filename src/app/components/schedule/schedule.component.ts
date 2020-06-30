@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from 'src/app/objects/employee';
 import { Shift } from 'src/app/objects/shift';
+import { ShiftService } from 'src/app/services/shift.service';
+import { HttpErrorResponse } from '@angular/common/http';
 import { SheredData } from 'src/app/shered-data';
 
 @Component({
@@ -13,13 +14,20 @@ export class ScheduleComponent implements OnInit {
   firstDayOfWeek:Date;//The first day of week to show
   dayDates:Array<Date>;//The all week dates
   shiftRows: Array<Array<Shift>>;
+  allShifts:Array<Shift>;
 
+  shifts:Array<Array<Shift>> = [[],[]];
+
+  //
+  getFinish:boolean;
+  //
   isManager:boolean;
 
   shiftATime = '08:00-16:00';
   shiftBTime = '16:00-24:00';
 
-  constructor() {
+  constructor(private shiftService:ShiftService) {
+    this.getFinish = false;
     if(SheredData.thisEmployee == (null || undefined) || SheredData.thisEmployee.role == (null || undefined)) this.isManager = false;
     else this.isManager = SheredData.thisEmployee.role == "Manager";
     //set the start date of the week
@@ -30,8 +38,30 @@ export class ScheduleComponent implements OnInit {
     console.log(this.shifts);//TODO: remove, for test only
    }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.getShiftsFromServer();
     this.updateDates(this.firstDayOfWeek);
+  }
+
+  async getShiftsFromServer(){
+    this.getFinish = false;
+    await this.shiftService.getshifts().subscribe(results => {
+      console.log(results);
+      var shifts: Array<Shift> = [];
+      for (var res in results) {
+        var jResult = JSON.parse(JSON.stringify(results[res]));
+        shifts.push(new Shift(jResult['ownerName'], new Date(jResult['date']), jResult['shift']));
+      }
+      this.allShifts = shifts;
+      this.getFinish = true;
+    }, (err: HttpErrorResponse) => {
+      if (err.error instanceof Error) {
+        console.log("Client-side error occured.");
+      }
+      else {
+        console.log("Server-side error occured.");
+      }
+    });
   }
 
   updateDates(firstDay:Date):void{
@@ -56,21 +86,49 @@ export class ScheduleComponent implements OnInit {
 
   //update the list of shifts to show
   updateShifts():void{
-    console.log(SheredData.shifts);
+    console.log(this.allShifts);
     //Take the shift from this week only
     var shiftAweek:Array<Shift> = [];
     var shiftBweek:Array<Shift> = [];
     this.shifts=[[],[]];
+    //fill the shifts
     for(var day in this.dayDates){
-      for(var shift in SheredData.shifts){
-        if(this.dateEquel(SheredData.shifts[shift].date, this.dayDates[day])){
-          if(SheredData.shifts[shift].shift == this.shiftATime) shiftAweek.push(SheredData.shifts[shift]);
-          else if(SheredData.shifts[shift].shift == this.shiftBTime) shiftBweek.push(SheredData.shifts[shift]);
+      for(var shift in this.allShifts){
+        if(this.dateEquel(this.allShifts[shift].date, this.dayDates[day])){
+          if(this.allShifts[shift].shift == this.shiftATime) shiftAweek.push(this.allShifts[shift]);
+          else if(this.allShifts[shift].shift == this.shiftBTime) shiftBweek.push(this.allShifts[shift]);
         }
       }
     }
     //TODO: fill the empty shifts.
-    this.shifts = [shiftAweek, shiftBweek];
+    var haveShift = false;
+    var shiftAweekTemp:Array<Shift> = [];
+    var shiftBweekTemp:Array<Shift> = [];
+    for(var day in this.dayDates){
+      haveShift = false;
+      //fill shift A
+      for(var shift in shiftAweek){
+        if(this.dateEquel(shiftAweek[shift].date, this.dayDates[day])){
+          shiftAweekTemp.push(shiftAweek[shift]);
+          haveShift = true;
+          break;
+        }
+      }
+      //if don't have shift fill with empty shift
+      if(!haveShift) shiftAweekTemp.push(new Shift("", this.dayDates[day], ""));
+      haveShift = false;
+      //fill shift B
+      for(var shift in shiftBweek){
+        if(this.dateEquel(shiftBweek[shift].date, this.dayDates[day])){
+          shiftBweekTemp.push(shiftBweek[shift]);
+          haveShift = true;
+          break;
+        }
+      }
+      //if don't have shift fill with empty shift
+      if(!haveShift) shiftBweekTemp.push(new Shift("", this.dayDates[day], ""));
+    }
+    this.shifts = [shiftAweekTemp, shiftBweekTemp];
     console.log(this.shifts);
   }
 
@@ -81,34 +139,4 @@ export class ScheduleComponent implements OnInit {
     else if(date1.getFullYear() != date2.getFullYear()) return false;
     return true;
   }
-
-  dateAfter(date1:Date, date2:Date ):boolean{
-    if(date1.getFullYear() < date2.getFullYear()) return false;
-    if(date1.getFullYear() >= date2.getFullYear() && date1.getMonth() < date2.getMonth()) return false;
-    if(date1.getMonth() >= date2.getMonth() && date1.getDate() < date2.getDate()) return false;
-    return true;
-  }
-
-
-shifts = [
-  [
-    new Shift("undef", this.firstDayOfWeek, this.shiftATime),
-    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,1),this.shiftATime),
-    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,2),this.shiftATime),
-    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,3),this.shiftATime),
-    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,4),this.shiftATime),
-    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,5),this.shiftATime),
-    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,6),this.shiftATime),
-  ],
-  [
-    new Shift("undef",this.firstDayOfWeek,this.shiftBTime),
-    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,1),this.shiftBTime),
-    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,2),this.shiftBTime),
-    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,3),this.shiftBTime),
-    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,4),this.shiftBTime),
-    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,5),this.shiftBTime),
-    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,6),this.shiftBTime),
-  ]
-]
-
 }

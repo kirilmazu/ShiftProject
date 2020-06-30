@@ -5,8 +5,8 @@
   <app-menage-menu (toChange)="onChange($event)">loading...</app-menage-menu>
   <div style="height: 2vh;"></div>
 
-  <app-dashboard [hidden]="hide_dashboard">loading...</app-dashboard>
-  <app-requests [hidden]="hide_requests">loading...</app-requests>
-  <app-schedule [hidden]="hide_schedule">loading...</app-schedule>
+  <app-dashboard [hidden]="hide_dashboard"><mat-spinner></mat-spinner></app-dashboard>
+  <app-requests [hidden]="hide_requests"><mat-spinner></mat-spinner></app-requests>
+  <app-schedule [hidden]="hide_schedule"><mat-spinner></mat-spinner></app-schedule>
 
 </div>

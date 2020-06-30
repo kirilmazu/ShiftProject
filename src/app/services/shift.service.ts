@@ -12,23 +12,8 @@ export class ShiftService {
 
   constructor(private httpClient : HttpClient) { }
 
-  async getshifts(){
-    return this.httpClient.get(this.baseurl + '/').subscribe(results => {
-      console.log(results);
-      var shifts: Array<Shift> = [];
-      for (var res in results) {
-        var jResult = JSON.parse(JSON.stringify(results[res]));
-        shifts.push(new Shift(jResult['ownerName'], new Date(jResult['date']), jResult['shift']));
-      }
-      SheredData.shifts = shifts;
-    }, (err: HttpErrorResponse) => {
-      if (err.error instanceof Error) {
-        console.log("Client-side error occured.");
-      }
-      else {
-        console.log("Server-side error occured.");
-      }
-    });
+  getshifts(){
+    return this.httpClient.get(this.baseurl + '/');
   }
 
   addShift(shift:Shift){
