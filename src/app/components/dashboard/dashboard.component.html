@@ -1,4 +1,5 @@
-<div class="center" *ngFor="let notificationItem of notificationItems">  
+<div [hidden]="getFinish" >Loading...</div>
+<div class="center" [hidden]="!getFinish" *ngFor="let notificationItem of notificationItems">  
     <div class="card row objectShedow">
         <div class="column">
             <img class="sized" src="{{notificationItem.iconPath}}" alt="icon"/>

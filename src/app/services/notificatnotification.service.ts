@@ -11,23 +11,8 @@ export class NotificationService {
 
   constructor(private httpClient : HttpClient) { }
 
-  async getNotifications(){
-    return this.httpClient.get(this.baseurl + '/').subscribe(results => {
-      console.log(results);
-      var notifications: Array<NotificationItem> = [];
-      for (var res in results) {
-        var jResult = JSON.parse(JSON.stringify(results[res]));
-        notifications.push(new NotificationItem(jResult['IconPath'], jResult['header'], jResult['body']));
-      }
-      SheredData.notifications = notifications;
-    }, (err: HttpErrorResponse) => {
-      if (err.error instanceof Error) {
-        console.log("Client-side error occured.");
-      }
-      else {
-        console.log("Server-side error occured.");
-      }
-    });
+  getNotifications(){
+    return this.httpClient.get(this.baseurl + '/');
   }
 
   addNotification(notification:NotificationItem){

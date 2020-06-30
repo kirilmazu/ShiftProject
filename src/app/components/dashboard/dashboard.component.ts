@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationItem } from 'src/app/objects/notification-item';
-import { SheredData } from 'src/app/shered-data';
 import { NotificationService } from 'src/app/services/notificatnotification.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,19 +12,39 @@ export class DashboardComponent implements OnInit {
   //list of all events to show in the dashboard 
   notificationItems: Array<NotificationItem>;
 
+  getFinish:boolean;
+
   constructor(private notifications:NotificationService) {
+    this.getFinish = false;
   }
 
   ngOnInit(): void {
-    this.notificationItems = this.getNotifications();
+    //get notification from the server
+    this.getNotifications();
     console.log(this.notificationItems);
   }
 
-  getNotifications():Array<NotificationItem>{
-    if(SheredData.notifications == (null || undefined)){
-      //TODO: wait to finish
-      this.notifications.getNotifications();
-    }
-    return SheredData.notifications;
+  getNotifications():void{
+    this.getFinish = false;
+    this.notifications.getNotifications().subscribe(results => {
+      console.log(results);
+      var notifications: Array<NotificationItem> = [];
+      for (var res in results) {
+        var jResult = JSON.parse(JSON.stringify(results[res]));
+        notifications.push(new NotificationItem(jResult['IconPath'], jResult['header'], jResult['body']));
+      }
+      //if empty add no notification message
+      if(notifications.length < 1) notifications.push(new NotificationItem("../assets/notification.png", "Is no new notifications for you.", ""));
+      else this.notificationItems = notifications;
+      
+      this.getFinish = true;
+    }, (err: HttpErrorResponse) => {
+      if (err.error instanceof Error) {
+        console.log("Client-side error occured.");
+      }
+      else {
+        console.log("Server-side error occured.");
+      }
+    });
   }
 }
