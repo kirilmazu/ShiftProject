@@ -12,4 +12,9 @@ export class WeekReqests {
         this.employee = employee;
         this.requests = requests;
     }
+
+    getName():string{
+        if(this.employee == (null || undefined) || this.employee.name == (null || undefined)) return "undefined";
+        return this.employee.name;
+    }
 }

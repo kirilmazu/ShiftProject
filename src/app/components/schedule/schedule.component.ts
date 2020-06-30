@@ -14,19 +14,24 @@ export class ScheduleComponent implements OnInit {
   dayDates:Array<Date>;//The all week dates
   shiftRows: Array<Array<Shift>>;
 
-  isManager = true;//take it from user data
+  isManager:boolean;
+
+  shiftATime = '08:00-16:00';
+  shiftBTime = '16:00-24:00';
 
   constructor() {
-    //if (SheredData.thisEmployee != (undefined || null) && SheredData.thisEmployee.role=="Manager") this.isManager = true;
-    /**get the date of week */
+    if(SheredData.thisEmployee == (null || undefined) || SheredData.thisEmployee.role == (null || undefined)) this.isManager = false;
+    else this.isManager = SheredData.thisEmployee.role == "Manager";
+    //set the start date of the week
     /**the format of date is MM/dd/yyyy */
-    this.firstDayOfWeek = new Date('6/7/2020'); /**todo: get the first day of current week */
-    /**update the sheduale table*/
-    this.updateDates(this.firstDayOfWeek);
+    this.firstDayOfWeek = new Date('6/7/2020');
+    //update the sheduale table
+    //this.updateDates(this.firstDayOfWeek);
     console.log(this.shifts);//TODO: remove, for test only
    }
 
   ngOnInit(): void {
+    this.updateDates(this.firstDayOfWeek);
   }
 
   updateDates(firstDay:Date):void{
@@ -34,6 +39,7 @@ export class ScheduleComponent implements OnInit {
     this.dayDates = [firstDay, SheredData.addDays(firstDay, 1), SheredData.addDays(firstDay, 2), SheredData.addDays(firstDay, 3),
       SheredData.addDays(firstDay, 4), SheredData.addDays(firstDay, 5), SheredData.addDays(firstDay, 6)];
     //update the shifts list
+    this.updateShifts();
   }
 
   //Show the next week schedule
@@ -50,38 +56,58 @@ export class ScheduleComponent implements OnInit {
 
   //update the list of shifts to show
   updateShifts():void{
-    /**Take the shift from this week only */
-    //this.shiftRows = 
+    console.log(SheredData.shifts);
+    //Take the shift from this week only
+    var shiftAweek:Array<Shift> = [];
+    var shiftBweek:Array<Shift> = [];
+    this.shifts=[[],[]];
+    for(var day in this.dayDates){
+      for(var shift in SheredData.shifts){
+        if(this.dateEquel(SheredData.shifts[shift].date, this.dayDates[day])){
+          if(SheredData.shifts[shift].shift == this.shiftATime) shiftAweek.push(SheredData.shifts[shift]);
+          else if(SheredData.shifts[shift].shift == this.shiftBTime) shiftBweek.push(SheredData.shifts[shift]);
+        }
+      }
+    }
+    //TODO: fill the empty shifts.
+    this.shifts = [shiftAweek, shiftBweek];
+    console.log(this.shifts);
   }
 
 
+  dateEquel(date1:Date, date2:Date ):boolean{
+    if(date1.getDate() != date2.getDate()) return false;
+    else if(date1.getMonth() != date2.getMonth()) return false;
+    else if(date1.getFullYear() != date2.getFullYear()) return false;
+    return true;
+  }
 
-  /**For test only */
- employee1 = new Employee('fName1','lName','email1@gmail.com','pass','com', 'team', 'role',1);
- employee2 = new Employee('fName2','lName','email2@gmail.com','pass','com', 'team', 'role',2);
- employee3 = new Employee('fName3','lName','email3@gmail.com','pass','com', 'team', 'role',3);
+  dateAfter(date1:Date, date2:Date ):boolean{
+    if(date1.getFullYear() < date2.getFullYear()) return false;
+    if(date1.getFullYear() >= date2.getFullYear() && date1.getMonth() < date2.getMonth()) return false;
+    if(date1.getMonth() >= date2.getMonth() && date1.getDate() < date2.getDate()) return false;
+    return true;
+  }
 
- shiftATime = new Date('6/7/2020 8:00:00');
- shiftBTime = new Date('6/7/2020 16:00:00');
 
 shifts = [
   [
-    new Shift(this.employee1.name,this.shiftATime,SheredData.addHours(this.shiftATime, 8)),
-    new Shift(this.employee1.name,SheredData.addDays(this.shiftATime,1),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),1)),
-    new Shift(this.employee2.name,SheredData.addDays(this.shiftATime,2),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),2)),
-    new Shift(this.employee2.name,SheredData.addDays(this.shiftATime,3),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),3)),
-    new Shift(this.employee1.name,SheredData.addDays(this.shiftATime,4),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),4)),
-    new Shift(this.employee3.name,SheredData.addDays(this.shiftATime,5),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),5)),
-    new Shift(this.employee3.name,SheredData.addDays(this.shiftATime,6),SheredData.addDays(SheredData.addHours(this.shiftATime, 8),6)),
+    new Shift("undef", this.firstDayOfWeek, this.shiftATime),
+    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,1),this.shiftATime),
+    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,2),this.shiftATime),
+    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,3),this.shiftATime),
+    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,4),this.shiftATime),
+    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,5),this.shiftATime),
+    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,6),this.shiftATime),
   ],
   [
-    new Shift(this.employee2.name,this.shiftBTime,SheredData.addHours(this.shiftBTime, 8)),
-    new Shift(this.employee3.name,SheredData.addDays(this.shiftBTime,1),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),1)),
-    new Shift(this.employee3.name,SheredData.addDays(this.shiftBTime,2),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),2)),
-    new Shift(this.employee3.name,SheredData.addDays(this.shiftBTime,3),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),3)),
-    new Shift(this.employee2.name,SheredData.addDays(this.shiftBTime,4),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),4)),
-    new Shift(this.employee2.name,SheredData.addDays(this.shiftBTime,5),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),5)),
-    new Shift(this.employee1.name,SheredData.addDays(this.shiftBTime,6),SheredData.addDays(SheredData.addHours(this.shiftBTime, 8),6)),
+    new Shift("undef",this.firstDayOfWeek,this.shiftBTime),
+    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,1),this.shiftBTime),
+    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,2),this.shiftBTime),
+    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,3),this.shiftBTime),
+    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,4),this.shiftBTime),
+    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,5),this.shiftBTime),
+    new Shift("undef",SheredData.addDays(this.firstDayOfWeek,6),this.shiftBTime),
   ]
 ]
 

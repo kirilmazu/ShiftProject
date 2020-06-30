@@ -20,15 +20,8 @@ button.btn{
   h2.or {
     width: 100%; 
     text-align: center; 
-    border-bottom: 1px solid blue; 
-    line-height: 0.1em;
     margin: 10px 0 20px; 
   } 
-
-  h2 span { 
-    color: rgb(7, 102, 139);
-    padding:10px 10px; 
-  }
 
   @media only screen and (max-width: 750px) {
     .intro {

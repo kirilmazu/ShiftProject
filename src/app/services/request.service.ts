@@ -34,6 +34,31 @@ export class RequestService {
     });
   }
 
+  getMyRequests(employeeID:number){
+    var myID = {
+      'employeeID': employeeID,
+  };
+    return this.httpClient.post(this.baseurl+'/myRequests',myID).subscribe(results => {
+      console.log(results);
+      var requests: Array<Request> = [];
+      var employee:Employee;
+      for (var res in results) {
+        var jResult = JSON.parse(JSON.stringify(results[res]));
+        employee = Employee.getEmployeeByID(jResult['ID'],SheredData.employees);
+        if(employee == (null || undefined)) employee = SheredData.thisEmployee;
+        requests.push(new Request(jResult['shift'],  jResult['priority'], employee, jResult['date']));
+      }
+      SheredData.requests = requests;
+    }, (err: HttpErrorResponse) => {
+      if (err.error instanceof Error) {
+        console.log("Client-side error occured.");
+      }
+      else {
+        console.log("Server-side error occured.");
+      }
+    }); 
+  }
+
   addRequest(request:Request){
     this.httpClient.post(this.baseurl+'/addRequests',{
       'ownerID': request.owner.employeeID,

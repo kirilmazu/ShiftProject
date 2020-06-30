@@ -6,7 +6,7 @@
 
     <!--Requests of all employees-->
 <div *ngFor = "let weekReqest of weekReqests">    
-    <p class="dayHead">{{weekReqest.employee.name}}</p>
+    <p class="dayHead">{{weekReqest.getName()}}</p>
 <table class="requestTable" >
     <tr>
         <!--Day name-->
@@ -47,14 +47,11 @@
     </tr>
     <tr *ngFor = "let row of shifts">
         <td *ngFor = "let shift of row">
-            <mat-select>
-                <mat-option class="employee textBody" *ngFor="let employee of employees" value="employee.name">{{employee.name}}</mat-option>
+            <mat-select [(ngModel)]="shift.ownerName">
+                <mat-option class="employee textBody" *ngFor="let employee of employees" [value]="employee.name">{{employee.name}}</mat-option>
               </mat-select>
-            <!--<select name="cars" id="cars">
-                <option class="employee textBody" *ngFor="let employee of employees" value="employee.name">{{employee.name}}</option>
-              </select>-->
         </td>
     </tr>
 </table>
 
-<button mat-raised-button class="btn save">Save</button>
+<button mat-raised-button class="btn save" (click)="save()">Save</button>

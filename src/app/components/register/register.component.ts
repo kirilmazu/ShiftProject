@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,private router:Router, private employeeService:EmployeeService) {
     this.introHader = "Shift project";
-    this.introBody = "This site is a finle project for web course, few words about the site.... but it can be longer so let see what hapand ............................................................................................... so long"
+    this.introBody = "The system to manage your shifts, created by K.O team as project for web course."
    }
 
   ngOnInit(): void {

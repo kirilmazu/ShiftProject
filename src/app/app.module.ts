@@ -17,14 +17,14 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { BuildScheduleComponent } from './components/build-schedule/build-schedule.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule } from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import {MatButtonModule } from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,8 @@ import {MatTableModule} from '@angular/material/table';
     MatGridListModule,
     MatSelectModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

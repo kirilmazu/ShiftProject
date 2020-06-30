@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Shift } from '../objects/shift';
 import { SheredData } from '../shered-data';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Employee } from '../objects/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class ShiftService {
       var shifts: Array<Shift> = [];
       for (var res in results) {
         var jResult = JSON.parse(JSON.stringify(results[res]));
-        shifts.push(new Shift(jResult['ownerName'], jResult['from'], jResult['to']));
+        shifts.push(new Shift(jResult['ownerName'], new Date(jResult['date']), jResult['shift']));
       }
       SheredData.shifts = shifts;
     }, (err: HttpErrorResponse) => {
@@ -31,11 +32,13 @@ export class ShiftService {
   }
 
   addShift(shift:Shift){
+    var ownerID = Employee.getEmployeeID(shift.ownerName, SheredData.employees);
+    if(ownerID == (null || undefined)) ownerID = 0;
     this.httpClient.post(this.baseurl+'/addShift',{
-      'ownerID': 0,
+      'ownerID': ownerID,
       'ownerName': shift.ownerName,
-      'from': shift.from,
-      'to': shift.to,
+      'date': shift.date,
+      'shift': shift.shift,
     }).subscribe(
       res => {
         console.log(res);

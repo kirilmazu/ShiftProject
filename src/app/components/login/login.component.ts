@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,private router:Router, private user:EmployeeService, private init:InitService) {
     this.introHader = "Shift project";
-    this.introBody = "This site is a finle project for web course, few words about the site...."
+    this.introBody = "The system to manage your shifts, created by K.O team as project for web course."
    }
 
   ngOnInit(): void {
@@ -34,8 +34,14 @@ export class LoginComponent implements OnInit {
     var employee: Employee;
     //check if employee exist in the data
     this.user.getEmployee(this.email, this.password).subscribe(async result => {
+      try{ 
+        var res = result[0];
+      } catch(Error) {
+        alert('Login failed.');
+        return;
+      }
+      
       var jResult = JSON.parse(JSON.stringify(result[0]));
-      console.log(result);
       employee = new Employee(jResult["firstName"], jResult['lastname'], jResult['email'], jResult['password'],
        jResult['company'], jResult['team'], jResult['role'],jResult['ID']);
       console.log(employee);  
@@ -46,7 +52,7 @@ export class LoginComponent implements OnInit {
         alert('loged in successfuly');
         await this.init.doInit();
         //TODO: replase it
-        await this.delay(3000);//give time to get data from the server
+        await this.delay(1000);//give time to get data from the server
         this.router.navigate(['/main']);
       }
       }, (err: HttpErrorResponse) => {
