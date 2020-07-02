@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
       SheredData.thisEmployee = newEmployee;
       alert("Hello " + this.firstName + " " + this.lastName + " welcome to ShiftProject.");
       //go to the main page
-      this.router.navigate(['/main']);
+      this.router.navigate(['/login']);
     }
   }
 

@@ -1,4 +1,3 @@
-import { Time } from '@angular/common';
 import { Employee } from './employee';
 
 export class Request {
@@ -8,10 +7,10 @@ export class Request {
     priority:number; /*need to be number 0-4*/
 
     constructor(shift:string, priority:number, owner:Employee, date:Date){
-        this.shift=shift;
-        this.owner=owner;
-        this.date=date;
-        this.priority;
+        this.shift = shift;
+        this.owner = owner;
+        this.date = date;
+        this.priority = priority;
     }
     
 }

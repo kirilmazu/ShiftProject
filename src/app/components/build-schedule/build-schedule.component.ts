@@ -5,6 +5,8 @@ import { Shift } from 'src/app/objects/shift';
 import {WeekReqests} from 'src/app/objects/week-reqests';
 import { SheredData } from 'src/app/shered-data';
 import { ShiftService } from 'src/app/services/shift.service';
+import { RequestService } from 'src/app/services/request.service';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-build-schedule',
@@ -14,7 +16,7 @@ import { ShiftService } from 'src/app/services/shift.service';
 export class BuildScheduleComponent implements OnInit {
   firstDayOfWeek:Date; //The date to start the table from
   dayDates:Array<Date>;//The array of days to show (one week for now)
-  dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];//The days names 
+  dayNames = SheredData.dayNames;//The days names 
   //list of all employees
   employees:Array<Employee>; 
   //list of week reqests for one employee
@@ -24,7 +26,7 @@ export class BuildScheduleComponent implements OnInit {
   shiftBTime = "16:00-24:00";
   
 
-  constructor(private shiftsService:ShiftService) { 
+  constructor(private shiftsService:ShiftService, private requestService:RequestService) { 
     //set the date to start the week
     this.firstDayOfWeek = new Date('6/7/2020');
     //update the sheduale table
@@ -32,20 +34,25 @@ export class BuildScheduleComponent implements OnInit {
     //get the list of all employees
     this.employees = SheredData.employees;
     //init requests
-    this.initTest();
+    this.getAllRequests();
+    
+    //this.initTest();
   }
 
   ngOnInit(): void {
+    this.updateRequests();
   }
 
   nextWeek():void{
     this.firstDayOfWeek = SheredData.addDays(this.firstDayOfWeek, 7);
     this.updateDates(this.firstDayOfWeek);
+    this.updateRequests();
   }
 
   previousWeek():void{
     this.firstDayOfWeek = SheredData.addDays(this.firstDayOfWeek, -7);
     this.updateDates(this.firstDayOfWeek);
+    this.updateRequests();
   }
 
   updateDates(firstDay:Date):void{
@@ -67,31 +74,80 @@ export class BuildScheduleComponent implements OnInit {
     }
   }
 
-
+  //build week of empty shifts to build new sheduale
   buildWeekShifts(firstDay:Date){
     return [
       [
         new Shift("undefined", firstDay, this.shiftATime),
-        new Shift("undefined",SheredData.addDays(firstDay,1),this.shiftATime),
-        new Shift("undefined",SheredData.addDays(firstDay,2),this.shiftATime),
-        new Shift("undefined",SheredData.addDays(firstDay,3),this.shiftATime),
-        new Shift("undefined",SheredData.addDays(firstDay,4),this.shiftATime),
-        new Shift("undefined",SheredData.addDays(firstDay,5),this.shiftATime),
-        new Shift("undefined",SheredData.addDays(firstDay,6),this.shiftATime),
+        new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),1),this.shiftATime),
+        new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),2),this.shiftATime),
+        new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),3),this.shiftATime),
+        new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),4),this.shiftATime),
+        new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),5),this.shiftATime),
+        new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),6),this.shiftATime),
       ],
       [
         new Shift("undefined",firstDay, this.shiftBTime),
-        new Shift("undefined",SheredData.addDays(firstDay,1),this.shiftBTime),
-        new Shift("undefined",SheredData.addDays(firstDay,2),this.shiftBTime),
-        new Shift("undefined",SheredData.addDays(firstDay,3),this.shiftBTime),
-        new Shift("undefined",SheredData.addDays(firstDay,4),this.shiftBTime),
-        new Shift("undefined",SheredData.addDays(firstDay,5),this.shiftBTime),
-        new Shift("undefined",SheredData.addDays(firstDay,6),this.shiftBTime),
+        new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),1),this.shiftBTime),
+        new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),2),this.shiftBTime),
+        new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),3),this.shiftBTime),
+        new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),4),this.shiftBTime),
+        new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),5),this.shiftBTime),
+        new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),6),this.shiftBTime),
       ]
     ]
   }
 
+  //get requests for any employee for this week
+  updateRequests():void{
+    var weekReqests:Array<WeekReqests> = [];
+    for(var emp in this.employees){
+      weekReqests.push(this.getRqestForEmployee(this.employees[emp], this.firstDayOfWeek));
+    }
+    console.log(weekReqests);
+    this.weekReqests = weekReqests;
+  }
+
+  //get all request from the server
+  async getAllRequests(){
+    this.requestService.getrequests(this.employees);
+    await this.delay(1000);//give time to get data from the server
+  }
+  
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  //get request for given employee for one week
+  getRqestForEmployee(employee:Employee, firstDay:Date):WeekReqests{
+    var requestsA : Array<Request> = [];
+    var requestsB : Array<Request> = [];
+    var requests = RequestService.employeeRequests.get(employee.employeeID);
+    
+    for(var day in this.dayDates){
+      for(var rec in requests){
+        console.log(requests[rec]);
+
+        if(SheredData.dateEquel(requests[rec].date, this.dayDates[day])){
+          if(requests[rec].shift == this.shiftATime) requestsA.push(requests[rec]);
+          else if(requests[rec].shift == this.shiftBTime) requestsB.push(requests[rec]);
+        }
+      }
+    }
+
+    return new WeekReqests(firstDay, employee, [requestsA, requestsB]);
+  }
+
+
+
+
+
+
+
+  //TODO: delete it
+
 /*buils requests for tests*/
+/*
 buildRequests(employee:Employee):Array<Array<Request>>{
  var requestsT = [
   [
@@ -127,5 +183,5 @@ initTest():void{
     new WeekReqests(this.firstDayOfWeek, SheredData.thisEmployee, this.buildRequests(SheredData.thisEmployee)),
     new WeekReqests(this.firstDayOfWeek, SheredData.thisEmployee, this.buildRequests(SheredData.thisEmployee)),
   ]
-}
+}*/
 }

@@ -21,13 +21,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     //get notification from the server
     this.getNotifications();
-    console.log(this.notificationItems);
   }
 
   getNotifications():void{
     this.getFinish = false;
     this.notifications.getNotifications().subscribe(results => {
-      console.log(results);
       var notifications: Array<NotificationItem> = [];
       for (var res in results) {
         var jResult = JSON.parse(JSON.stringify(results[res]));

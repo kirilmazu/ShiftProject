@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Shift } from 'src/app/objects/shift';
 import { ShiftService } from 'src/app/services/shift.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -26,16 +26,13 @@ export class ScheduleComponent implements OnInit {
   shiftATime = '08:00-16:00';
   shiftBTime = '16:00-24:00';
 
-  constructor(private shiftService:ShiftService) {
+  constructor (private shiftService:ShiftService) {
     this.getFinish = false;
     if(SheredData.thisEmployee == (null || undefined) || SheredData.thisEmployee.role == (null || undefined)) this.isManager = false;
     else this.isManager = SheredData.thisEmployee.role == "Manager";
     //set the start date of the week
     /**the format of date is MM/dd/yyyy */
     this.firstDayOfWeek = new Date('6/7/2020');
-    //update the sheduale table
-    //this.updateDates(this.firstDayOfWeek);
-    console.log(this.shifts);//TODO: remove, for test only
    }
 
   async ngOnInit(): Promise<void> {
@@ -46,7 +43,6 @@ export class ScheduleComponent implements OnInit {
   async getShiftsFromServer(){
     this.getFinish = false;
     await this.shiftService.getshifts().subscribe(results => {
-      console.log(results);
       var shifts: Array<Shift> = [];
       for (var res in results) {
         var jResult = JSON.parse(JSON.stringify(results[res]));
@@ -54,6 +50,8 @@ export class ScheduleComponent implements OnInit {
       }
       this.allShifts = shifts;
       this.getFinish = true;
+      this.nextWeek();
+      this.previousWeek();
     }, (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
         console.log("Client-side error occured.");
@@ -86,7 +84,6 @@ export class ScheduleComponent implements OnInit {
 
   //update the list of shifts to show
   updateShifts():void{
-    console.log(this.allShifts);
     //Take the shift from this week only
     var shiftAweek:Array<Shift> = [];
     var shiftBweek:Array<Shift> = [];
@@ -129,7 +126,6 @@ export class ScheduleComponent implements OnInit {
       if(!haveShift) shiftBweekTemp.push(new Shift("", this.dayDates[day], ""));
     }
     this.shifts = [shiftAweekTemp, shiftBweekTemp];
-    console.log(this.shifts);
   }
 
 
