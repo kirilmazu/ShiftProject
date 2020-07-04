@@ -14,3 +14,7 @@ option.employee {
   width: 100%;
   font-size: 30px;
 }
+
+.textBody{
+  text-align: center;
+}

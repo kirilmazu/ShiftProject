@@ -11,6 +11,12 @@ div.priority {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   background-color: rgba(29, 178, 236, 0.1);
 }
+
+button.save {
+  margin-top: 1%;
+  margin-left: 50%;
+}
+
 p.p0 {
   color: red;
 }

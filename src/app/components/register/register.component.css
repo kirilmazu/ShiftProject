@@ -41,6 +41,11 @@ button.btn{
     font-weight: bold;
   }
 
+  img.sized{
+    width: 40%;
+    margin-top: 3vh;
+    padding: 0.5%;
+  }
 
   @media only screen and (max-width: 1300px) {
     .intro {

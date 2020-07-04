@@ -23,6 +23,12 @@ button.btn{
     margin: 10px 0 20px; 
   } 
 
+  img.sized{
+    width: 40%;
+    margin-top: 3vh;
+    padding: 0.5%;
+  }
+
   @media only screen and (max-width: 750px) {
     .intro {
       display: none;
