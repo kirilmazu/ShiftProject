@@ -3,6 +3,7 @@ import { Employee } from 'src/app/objects/employee';
 import { Request } from 'src/app/objects/request';
 import { SheredData } from 'src/app/shered-data';
 import { RequestService } from 'src/app/services/request.service';
+import { EmployeeService } from 'src/app/services/employee.service'
 
 @Component({
   selector: 'app-requests',
@@ -17,11 +18,11 @@ export class RequestsComponent implements OnInit {
 
   firstDayOfWeek:Date;
 
-  hiddSave = (SheredData.thisEmployee == (null || undefined));
+  hiddSave = (EmployeeService.thisEmployee == (null || undefined));
 
   dayNames = SheredData.dayNames;
 
-  employee = SheredData.thisEmployee;
+  employee = EmployeeService.thisEmployee;
 
   colores = ["red", "orange", "yellow", "blue", "green"];
 
@@ -79,7 +80,7 @@ export class RequestsComponent implements OnInit {
  buildNewRequestRow(firstDay:Date, shift:string, days:number):Array<Request>{
     var row = new Array<Request>(days);
     for(var _i = 0; _i < days; _i++){
-        row[_i] = (new Request(shift, 2, SheredData.thisEmployee, SheredData.addDays(firstDay, _i)));
+        row[_i] = (new Request(shift, 2, EmployeeService.thisEmployee, SheredData.addDays(firstDay, _i)));
     }
     return row;
   }

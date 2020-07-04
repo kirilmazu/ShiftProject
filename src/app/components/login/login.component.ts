@@ -48,11 +48,11 @@ export class LoginComponent implements OnInit {
       if(employee == (undefined || null) || employee.firstName == (undefined || null) ){
         alert('Login failed.');
       } else {
-        SheredData.thisEmployee = employee
+        EmployeeService.thisEmployee = employee
         alert('loged in successfuly');
         await this.init.doInit();
         //TODO: replase it
-        await this.delay(1000);//give time to get data from the server
+        await this.delay(500);//give time to get data from the server
         this.router.navigate(['/main']);
       }
       }, (err: HttpErrorResponse) => {

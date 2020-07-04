@@ -9,6 +9,9 @@ import { SheredData } from '../shered-data';
 export class EmployeeService {
   baseurl: string = "http://localhost:3000/employee";
 
+  static thisEmployee:Employee;
+  static allEmployees:Array<Employee>;
+
   constructor(private httpClient : HttpClient) { }
 
   //get the employee with the email and password
@@ -30,7 +33,7 @@ export class EmployeeService {
         employees.push(new Employee(jResult["firstName"], jResult['lastname'], jResult['email'], jResult['password'],
         jResult['company'], jResult['team'], jResult['role'], jResult['ID']));
       }
-      SheredData.employees = employees;
+      EmployeeService.allEmployees = employees;
     }, (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
         console.log("Client-side error occured.");

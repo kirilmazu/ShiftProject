@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import { SheredData } from 'src/app/shered-data';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +10,9 @@ import { SheredData } from 'src/app/shered-data';
 export class HeaderComponent implements OnInit {
 
   userName = "My name";
-  constructor(private route:ActivatedRoute,private router:Router) { 
-    if (SheredData.thisEmployee != (undefined || null)) 
-    this.userName = SheredData.thisEmployee.firstName + " " + SheredData.thisEmployee.lastName;
+  constructor(private route:ActivatedRoute,private router:Router, private employeeService:EmployeeService) { 
+    if (EmployeeService.thisEmployee != (undefined || null)) 
+    this.userName = EmployeeService.thisEmployee.firstName + " " + EmployeeService.thisEmployee.lastName;
   }
 
   ngOnInit(): void {

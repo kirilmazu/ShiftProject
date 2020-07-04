@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { SheredData } from 'src/app/shered-data';
 import { Employee } from 'src/app/objects/employee';
 import { EmployeeService } from 'src/app/services/employee.service';
 
@@ -46,9 +45,7 @@ export class RegisterComponent implements OnInit {
       var newEmployee = new Employee(this.firstName, this.lastName, this.email, this.password, this.company,this.team, this.role,0);
       //save the employee to data storage
       this.saveEmployee(newEmployee);
-      //login with the new user
-      SheredData.thisEmployee = newEmployee;
-      alert("Hello " + this.firstName + " " + this.lastName + " welcome to ShiftProject.");
+      alert("Hello " + this.firstName + " " + this.lastName + " welcome to ShiftProject, please login.");
       //go to the main page
       this.router.navigate(['/login']);
     }
@@ -79,7 +76,6 @@ export class RegisterComponent implements OnInit {
   //save the new user in the server
   saveEmployee(employee:Employee):void{
     this.employeeService.addEmployee(employee);
-    /**todo: implement*/
   }
 
   //cencel button clicked

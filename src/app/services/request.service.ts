@@ -16,7 +16,7 @@ export class RequestService {
   static employeeRequests = new Map<number,Array<Request>>();
 
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient : HttpClient, private employeeService:EmployeeService) { }
 
   async getrequests(employees:Array<Employee>){
     this.httpClient.get(this.baseurl + '/').subscribe(results => {
@@ -41,9 +41,6 @@ export class RequestService {
 
   fillTheMap(employees:Array<Employee>):void{
     var requests:Array<Request> = [];
-    console.log("requests:");
-    console.log(RequestService.allRequests);
-    console.log(employees);
     for(var emp in employees){
       requests = [];
       for(var rec in RequestService.allRequests){
@@ -65,11 +62,11 @@ export class RequestService {
       var employee:Employee;
       for (var res in results) {
         var jResult = JSON.parse(JSON.stringify(results[res]));
-        employee = Employee.getEmployeeByID(jResult['ID'],SheredData.employees);
-        if(employee == (null || undefined)) employee = SheredData.thisEmployee;
+        employee = Employee.getEmployeeByID(jResult['ID'],EmployeeService.allEmployees);
+        if(employee == (null || undefined)) employee = EmployeeService.thisEmployee;
         requests.push(new Request(jResult['shift'],  jResult['priority'], employee, jResult['date']));
       }
-      SheredData.requests = requests;
+      RequestService.allRequests = requests;
     }, (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
         console.log("Client-side error occured.");
