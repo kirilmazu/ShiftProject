@@ -46,6 +46,10 @@ export class SheredData {
     return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
   }
 
+  static dateToDB(date:Date):string{
+    return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+  }
+
   static delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }

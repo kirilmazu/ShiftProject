@@ -52,12 +52,12 @@ export class RequestsComponent implements OnInit {
   }
 
   save():void{
-    console.log(this.requestrows);
     for(var val1 in this.requestrows){
       for(var val2 in this.requestrows[val1]){
         this.requestService.addRequest(this.requestrows[val1][val2]);
       }
     }
+    alert("Requests saves.");
   }
 
  

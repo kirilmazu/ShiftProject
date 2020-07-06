@@ -18,19 +18,18 @@
     </tr>
     <tr *ngFor = "let row of requestrows">
         <td *ngFor = "let request of row">
-            <input class="shift" type="number" [(ngModel)]="request.priority"/>
+            <select matNativeControl [(ngModel)]="request.priority" required>
+                <option [ngValue]="0">0 - Can't Work</option>
+                <option [ngValue]="1">1 - Prefered to don't work</option>
+                <option [ngValue]="2">2 - Available</option>
+                <option [ngValue]="3">3 - Prefered shift</option>
+                <option [ngValue]="4">4 - Most prefered shift</option>
+              </select>
+
         </td>
     </tr>
 </table>
 
 <button mat-raised-button class="btn save" (click)="save()">Save</button>
-<!--
-<div class="priority">
-<p class="p0">0-Can't Work</p>
-<p class="p1">1-Prefered to don't work</p>
-<p class="p2">2-Available</p>
-<p class="p3">3-Prefered shift</p>
-<p class="p4">4-Most prefered shift</p>
-</div>-->
 
 </div>

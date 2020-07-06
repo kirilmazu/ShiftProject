@@ -69,14 +69,15 @@ export class BuildScheduleComponent implements OnInit {
       }
     }
     //Add notification about new shifts
-    this.notificationService.addNotification(new NotificationItem('../assets/calendar 2.png', 'New scheduale published.', 'Published scheduale for the dates: ' + SheredData.shedualeDates(this.dayDates)));
+    //this.notificationService.addNotification(new NotificationItem('../assets/calendar 2.png', 'New scheduale published.', 'Published scheduale for the dates: ' + SheredData.shedualeDates(this.dayDates)));
+    alert("Scheduale saved.");
   }
 
   //build week of empty shifts to build new sheduale
   buildWeekShifts(firstDay:Date){
     return [
       [
-        new Shift("undefined", firstDay, this.shiftsService.shiftATime),
+        new Shift("undefined", SheredData.addHours(firstDay,12), this.shiftsService.shiftATime),
         new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),1),this.shiftsService.shiftATime),
         new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),2),this.shiftsService.shiftATime),
         new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),3),this.shiftsService.shiftATime),
@@ -85,7 +86,7 @@ export class BuildScheduleComponent implements OnInit {
         new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),6),this.shiftsService.shiftATime),
       ],
       [
-        new Shift("undefined",firstDay, this.shiftsService.shiftBTime),
+        new Shift("undefined",SheredData.addHours(firstDay,12), this.shiftsService.shiftBTime),
         new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),1),this.shiftsService.shiftBTime),
         new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),2),this.shiftsService.shiftBTime),
         new Shift("undefined",SheredData.addDays(SheredData.addHours(firstDay,12),3),this.shiftsService.shiftBTime),
