@@ -1,0 +1,30 @@
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(25, 118, 210, 0.7);
+    color: white;
+    font-weight: 600;
+  }
+
+  img.sized{
+    height: 40px;
+    padding: 0.5%;
+  }
+
+  div.spaser{
+      width: 1%;
+  }
+
+  div.bigSpaser{
+    width: 88%;
+  }
+
+  div.logoutLink{ 
+      text-align: right;
+      padding: 1%;
+  }

@@ -1,0 +1,37 @@
+
+<div class="row main">
+    <div class="column intro" id="intro">
+      <img class="sized"
+      alt="ShiftIcon"
+      src="../assets/ShiftIcon.png"
+    />
+      <h1 class="introHader">{{introHader}}</h1>
+      <p class="introBody">{{introBody}}</p>
+    </div>
+
+    <div class="column formBody">
+      <h1 class="Header textShadow">Login</h1>
+
+      <div class="devider"></div>
+
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Enter email" [(ngModel)]="email" name="email">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-raised-button type="button" class="btn" (click)="login()">Login</button>
+   
+      <h2 class="or textShadow"><span>OR</span></h2>
+     
+      <button mat-raised-button type="button" class="btn" (click)="goToRegister()">Registr</button>
+    </div>
+
+  </div>

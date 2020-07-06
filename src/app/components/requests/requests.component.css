@@ -1,0 +1,34 @@
+input.shift {
+  width: 99%;
+  outline: none;
+  text-align: center;
+  border: none;
+  background: none;
+}
+
+div.priority {
+  background-color: rgb(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: rgba(29, 178, 236, 0.1);
+}
+
+button.save {
+  margin-top: 1%;
+  margin-left: 50%;
+}
+
+p.p0 {
+  color: red;
+}
+p.p1 {
+  color: orange;
+}
+p.p2 {
+  color: yellow;
+}
+p.p3 {
+  color: blue;
+}
+p.p4 {
+  color: green;
+}

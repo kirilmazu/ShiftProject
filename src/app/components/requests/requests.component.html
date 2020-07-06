@@ -1,0 +1,35 @@
+<div [hidden]="employee == (null || undefined)" class="full-width">
+    <div class="pn">
+        <button mat-raised-button class="btn pn" (click)="previousWeek()"><previous week</button>
+        <button mat-raised-button class="btn pn" (click)="nextWeek()">next week></button>
+    </div>
+<table class="requestTable">
+    <tr>
+        <!--Day name-->
+          <th *ngFor = "let dayDate of dayDates">
+            <h2 class="dayHead">{{dayNames[dayDate.getDay()]}}</h2>
+          </th>
+    </tr>
+    <tr>
+        <!--Date-->
+        <th *ngFor = "let dayDate of dayDates">
+            {{dayDate.toLocaleDateString()}}
+          </th>
+    </tr>
+    <tr *ngFor = "let row of requestrows">
+        <td *ngFor = "let request of row">
+            <select matNativeControl [(ngModel)]="request.priority" required>
+                <option [ngValue]="0">0 - Can't Work</option>
+                <option [ngValue]="1">1 - Prefered to don't work</option>
+                <option [ngValue]="2">2 - Available</option>
+                <option [ngValue]="3">3 - Prefered shift</option>
+                <option [ngValue]="4">4 - Most prefered shift</option>
+              </select>
+
+        </td>
+    </tr>
+</table>
+
+<button mat-raised-button class="btn save" (click)="save()">Save</button>
+
+</div>

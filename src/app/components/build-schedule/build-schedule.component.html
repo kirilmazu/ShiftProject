@@ -1,0 +1,57 @@
+<div class="full-width">
+    <div class="pn">
+        <button mat-raised-button class="btn pn" (click)="previousWeek()"><previous week</button>
+        <button mat-raised-button class="btn pn" (click)="nextWeek()">next week></button>
+    </div>
+
+    <!--Requests of all employees-->
+<div *ngFor = "let weekReqest of weekReqests">    
+    <p class="dayHead">{{weekReqest.getName()}}</p>
+<table class="requestTable" >
+    <tr>
+        <!--Day name-->
+          <th class="dayHead" *ngFor = "let dayDate of dayDates">
+            {{dayNames[dayDate.getDay()]}}
+          </th>
+    </tr>
+    <tr>
+        <!--Date-->
+        <th class="textBody" *ngFor = "let dayDate of dayDates">
+            {{dayDate.toLocaleDateString()}}
+          </th>
+    </tr>
+    <tr *ngFor = "let row of weekReqest.requests">
+        <td *ngFor = "let request of row">
+            <p class="textBody">{{request.priority}}</p>
+        </td>
+    </tr>
+</table>
+</div>
+
+
+<!--New scheduale build-->
+<div style="height: 2vh;"></div>
+<p class="dayHead">New schedule</p>
+<table class="requestTable">
+    <tr>
+        <!--Day name-->
+          <th class="dayHead" *ngFor = "let dayDate of dayDates">
+            {{dayNames[dayDate.getDay()]}}
+          </th>
+    </tr>
+    <tr>
+        <!--Date-->
+        <th class="textBody" *ngFor = "let dayDate of dayDates">
+            {{dayDate.toLocaleDateString()}}
+          </th>
+    </tr>
+    <tr *ngFor = "let row of shifts">
+        <td *ngFor = "let shift of row">
+            <mat-select [(ngModel)]="shift.ownerName">
+                <mat-option class="employee textBody" *ngFor="let employee of employees" [value]="employee.name">{{employee.name}}</mat-option>
+              </mat-select>
+        </td>
+    </tr>
+</table>
+
+<button mat-raised-button class="btn save" (click)="save()">Save</button>

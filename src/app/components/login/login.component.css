@@ -1,0 +1,52 @@
+button.btn{
+    width: 50%;
+    margin-bottom: 3%
+  }
+
+  div.main{
+    height: 97vh;
+  }
+
+  div.formBody{
+    text-align: center;
+  }
+
+  div.devider{
+    background-color: rgb(45, 97, 117); 
+    height: 2px;
+    margin-bottom: 2%;
+  }
+
+  h2.or {
+    width: 100%; 
+    text-align: center; 
+    margin: 10px 0 20px; 
+  } 
+
+  img.sized{
+    width: 40%;
+    margin-top: 3vh;
+    padding: 0.5%;
+  }
+
+  @media only screen and (max-width: 750px) {
+    .intro {
+      display: none;
+    }
+
+    .formBody{
+      margin-left: 10%;
+    }
+  }
+
+  @media only screen and (max-height: 700px) {
+    .formBody{
+      margin-top: 5%;
+    }
+  }
+
+  @media only screen and (min-height: 710px) {
+    .formBody{
+      margin-top: 15%;
+    }
+  }
